@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Piel de Ángel · Confirma tu lugar</title>
+<meta name="description" content="Clase de maquillaje profesional con Ángel Guerra. Sábado 19 de septiembre, 10:00 a. m., South Jordan, Utah. Confirma tu lugar.">
+<meta name="theme-color" content="#15131A">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_US">
+<meta property="og:site_name" content="Piel de Ángel">
+<meta property="og:title" content="Piel de Ángel · Confirma tu lugar">
+<meta property="og:description" content="Clase de maquillaje profesional con Ángel Guerra. Sábado 19 de septiembre, 10:00 a. m. · South Jordan, Utah.">
+<meta property="og:image" content="https://vevvouhnytkfkvrwlfoh.supabase.co/storage/v1/object/public/medios/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Piel de Ángel, clase de maquillaje profesional con Ángel Guerra">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%84%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://vevvouhnytkfkvrwlfoh.supabase.co">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --noche:#15131A;
+    --terciopelo:#1E1B24;
+    --pozo:#110F15;
+    --crema:#F3ECE6;
+    --rubor:#D9A7A0;
+    --rubor-suave:rgba(217,167,160,.12);
+    --polvo:#A39DA8;
+    --hilo:rgba(243,236,230,.12);
+    --hilo-fuerte:rgba(243,236,230,.22);
+    --alerta:#FF9E91;
+
+    --serif:"Newsreader","Iowan Old Style","Palatino Linotype",Georgia,serif;
+    --sans:"Hanken Grotesk","Avenir Next","Segoe UI",system-ui,sans-serif;
+
+    --margen:clamp(22px,6vw,72px);
+  }
+
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html{-webkit-text-size-adjust:100%}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(90vmax 70vmax at 100% -10%, rgba(217,167,160,.10), transparent 60%),
+      var(--noche);
+    color:var(--crema);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit}
+
+  /* ---------- video de fondo, como marca de agua ---------- */
+  .velo{
+    position:absolute;
+    top:0;left:0;
+    width:100%;
+    height:min(80vh,760px);
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+    -webkit-mask-image:linear-gradient(180deg,#000 50%,transparent 100%);
+            mask-image:linear-gradient(180deg,#000 50%,transparent 100%);
+  }
+  @media (min-width:920px){
+    .velo{
+      width:64vw;
+      height:min(100vh,920px);
+      -webkit-mask-image:radial-gradient(110% 95% at 28% 30%,#000 48%,transparent 82%);
+              mask-image:radial-gradient(110% 95% at 28% 30%,#000 48%,transparent 82%);
+    }
+  }
+  .velo-foto,.velo video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:56% 30%;
+    filter:saturate(.85) contrast(1.05);
+  }
+  .velo-foto{
+    opacity:.62;
+    transform-origin:56% 30%;
+    animation:respira 14s ease-in-out infinite alternate;
+  }
+  .velo video{opacity:0;transition:opacity 1.2s ease}
+  .velo video.en-vivo{opacity:.62}
+  .velo::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(21,19,26,.50) 0%,rgba(21,19,26,.28) 40%,rgba(21,19,26,.50) 100%);
+  }
+  @keyframes respira{
+    from{transform:scale(1)}
+    to{transform:scale(1.1) translate(-1.5%,1%)}
+  }
+  .pagina,.pie{position:relative;z-index:1}
+
+  .pagina{
+    max-width:1180px;
+    margin:0 auto;
+    padding:clamp(28px,6vw,72px) var(--margen) 56px;
+    display:grid;
+    gap:clamp(40px,7vw,72px);
+  }
+
+  @media (min-width:920px){
+    .pagina{
+      grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+      align-items:start;
+      column-gap:clamp(48px,6vw,96px);
+    }
+    .invitacion{grid-column:1}
+    .confirmar{grid-column:2;grid-row:1 / span 2;position:sticky;top:32px}
+    .detalles{grid-column:1}
+  }
+
+  /* ---------- tipografía ---------- */
+  .ceja{
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--rubor);
+    margin:0;
+    font-variant-numeric:tabular-nums;
+  }
+
+  h1{
+    font-family:var(--serif);
+    font-weight:300;
+    font-size:clamp(64px,15vw,132px);
+    line-height:.9;
+    letter-spacing:-.02em;
+    margin:18px 0 0;
+    text-wrap:balance;
+  }
+  h1 em{font-style:italic;color:var(--rubor);font-weight:300}
+
+  .lema{
+    font-family:var(--serif);
+    font-size:clamp(21px,2.4vw,26px);
+    line-height:1.4;
+    color:var(--crema);
+    margin:22px 0 0;
+    max-width:30ch;
+  }
+  .lema span{display:block;color:var(--polvo);font-style:italic}
+
+  h2{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(30px,4vw,40px);
+    line-height:1.08;
+    letter-spacing:-.01em;
+    margin:10px 0 0;
+    text-wrap:balance;
+  }
+
+  /* ---------- invitación ---------- */
+  .invitacion{display:grid;gap:clamp(34px,5vw,48px)}
+
+  .cabeza{display:grid;gap:0}
+
+  .ir{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:28px;
+    padding:15px 22px;
+    border:1px solid var(--rubor);
+    color:var(--crema);
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    width:max-content;
+    transition:background-color .2s ease,color .2s ease;
+  }
+  .ir:hover{background:var(--rubor);color:#1A1016}
+  .ir:focus-visible{outline:2px solid var(--crema);outline-offset:4px}
+  @media (min-width:920px){.ir{display:none}}
+
+  .junto{white-space:nowrap}
+
+  .retrato{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    grid-template-areas:"foto firma" "lista lista";
+    column-gap:clamp(20px,4vw,36px);
+    row-gap:22px;
+    align-items:end;
+  }
+  .espejo{grid-area:foto}
+  .firma{grid-area:firma}
+  .credenciales{grid-area:lista}
+  @media (min-width:520px){
+    .retrato{grid-template-areas:"foto firma" "foto lista";align-items:start}
+    .firma{align-self:end}
+  }
+  .espejo{
+    position:relative;
+    width:clamp(140px,38vw,205px);
+    aspect-ratio:448 / 640;
+    margin:14px 14px 0 0;
+  }
+  .espejo::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border:1px solid var(--rubor);
+    border-radius:999px 999px 3px 3px;
+    transform:translate(12px,-12px);
+    opacity:.6;
+  }
+  .espejo img{
+    position:relative;
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:50% 8%;
+    border-radius:999px 999px 3px 3px;
+    background:#E4D6DE;
+  }
+  .firma{display:grid;gap:10px;padding-bottom:6px}
+  .firma .nombre{
+    font-family:var(--serif);
+    font-size:clamp(24px,3vw,30px);
+    line-height:1.1;
+    margin:0;
+  }
+  .firma .oficio{margin:0;color:var(--polvo);font-size:15px;line-height:1.45}
+  .credenciales{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:8px;
+    font-size:15.5px;
+  }
+  .credenciales li{display:flex;gap:10px;align-items:baseline}
+  .credenciales li::before{content:"";width:12px;height:1px;background:var(--rubor);flex:0 0 auto;transform:translateY(-4px)}
+
+  .aprender{display:grid;gap:18px}
+  .aprender ol{
+    list-style:none;
+    margin:6px 0 0;
+    padding:0;
+    display:grid;
+  }
+  .aprender li{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:14px;
+    align-items:baseline;
+    padding:16px 0;
+    border-top:1px solid var(--hilo);
+    font-size:17px;
+    line-height:1.45;
+  }
+  .aprender li:last-child{border-bottom:1px solid var(--hilo)}
+  .aprender .n{
+    font-family:var(--serif);
+    font-size:24px;
+    color:var(--rubor);
+    font-variant-numeric:tabular-nums;
+    line-height:1;
+  }
+  .metodo{
+    margin:4px 0 0;
+    font-size:14px;
+    color:var(--polvo);
+    line-height:1.7;
+  }
+  .metodo b{
+    font-weight:500;
+    color:var(--crema);
+    letter-spacing:.02em;
+  }
+  .metodo i{font-style:normal;color:var(--rubor);padding:0 .35em}
+
+  /* ---------- formulario ---------- */
+  .confirmar{scroll-margin-top:20px}
+  .panel{
+    background:var(--terciopelo);
+    border:1px solid var(--hilo);
+    padding:clamp(24px,5vw,40px);
+  }
+  .panel .intro{margin:12px 0 0;color:var(--polvo);font-size:16px;max-width:40ch}
+
+  form{display:grid;gap:22px;margin-top:28px}
+
+  .campo{display:grid;gap:8px}
+  .etiqueta{
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--polvo);
+  }
+
+  input[type=text],input[type=tel],input[type=email],select{
+    width:100%;
+    height:54px;
+    padding:0 16px;
+    background:var(--pozo);
+    border:1px solid var(--hilo-fuerte);
+    border-radius:2px;
+    color:var(--crema);
+    font:500 17px/1 var(--sans);
+    transition:border-color .15s ease,box-shadow .15s ease;
+    appearance:none;
+    -webkit-appearance:none;
+  }
+  input::placeholder{color:rgba(163,157,168,.7);font-weight:400}
+  input:focus,select:focus{
+    outline:none;
+    border-color:var(--rubor);
+    box-shadow:0 0 0 3px rgba(217,167,160,.22);
+  }
+  .campo.mal input,.campo.mal select{border-color:var(--alerta)}
+
+  .tel{display:grid;grid-template-columns:118px minmax(0,1fr);gap:8px}
+  .select-envoltura{position:relative}
+  .select-envoltura::after{
+    content:"";
+    position:absolute;
+    right:14px;top:50%;
+    width:7px;height:7px;
+    border-right:1.5px solid var(--polvo);
+    border-bottom:1.5px solid var(--polvo);
+    transform:translateY(-70%) rotate(45deg);
+    pointer-events:none;
+  }
+  select{padding-right:32px;cursor:pointer;font-variant-numeric:tabular-nums}
+
+  .error{
+    margin:0;
+    font-size:14.5px;
+    color:var(--alerta);
+    min-height:0;
+  }
+  .error:empty{display:none}
+
+  fieldset{border:0;margin:0;padding:0;display:grid;gap:10px}
+  legend{padding:0;margin-bottom:10px}
+
+  .edades{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .chip{position:relative;display:block;cursor:pointer}
+  .chip input{position:absolute;opacity:0;width:1px;height:1px}
+  .chip span{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:50px;
+    padding:0 6px;
+    border:1px solid var(--hilo-fuerte);
+    background:var(--pozo);
+    font-size:15.5px;
+    font-weight:500;
+    text-align:center;
+    line-height:1.15;
+    font-variant-numeric:tabular-nums;
+    transition:border-color .15s ease,background-color .15s ease;
+  }
+  .chip:hover span{border-color:rgba(217,167,160,.55)}
+  .chip input:checked + span{border-color:var(--rubor);background:var(--rubor-suave)}
+  .chip input:focus-visible + span{outline:2px solid var(--crema);outline-offset:2px}
+  fieldset.mal .chip span{border-color:rgba(255,158,145,.6)}
+
+  .opcion{position:relative;display:block;cursor:pointer}
+  .opcion input{position:absolute;opacity:0;width:1px;height:1px}
+  .opcion .cuerpo{
+    display:grid;
+    grid-template-columns:22px 1fr;
+    gap:14px;
+    align-items:center;
+    padding:15px 16px;
+    border:1px solid var(--hilo-fuerte);
+    background:var(--pozo);
+    font-size:16.5px;
+    line-height:1.35;
+    transition:border-color .15s ease,background-color .15s ease;
+  }
+  .opcion .punto{
+    width:22px;height:22px;
+    border:1.5px solid var(--polvo);
+    border-radius:50%;
+    display:grid;place-items:center;
+    transition:border-color .15s ease;
+  }
+  .opcion .punto::after{
+    content:"";
+    width:10px;height:10px;
+    border-radius:50%;
+    background:var(--rubor);
+    transform:scale(0);
+    transition:transform .18s cubic-bezier(.3,1.6,.5,1);
+  }
+  .opcion:hover .cuerpo{border-color:rgba(217,167,160,.55)}
+  .opcion input:checked + .cuerpo{border-color:var(--rubor);background:var(--rubor-suave)}
+  .opcion input:checked + .cuerpo .punto{border-color:var(--rubor)}
+  .opcion input:checked + .cuerpo .punto::after{transform:scale(1)}
+  .opcion input:focus-visible + .cuerpo{outline:2px solid var(--crema);outline-offset:2px}
+  fieldset.mal .opcion .cuerpo{border-color:rgba(255,158,145,.6)}
+
+  .permiso{
+    display:grid;
+    grid-template-columns:24px 1fr;
+    gap:14px;
+    align-items:start;
+    cursor:pointer;
+    padding:16px;
+    border:1px dashed var(--hilo-fuerte);
+  }
+  .permiso input{position:absolute;opacity:0;width:1px;height:1px}
+  .caja{
+    width:24px;height:24px;
+    border:1.5px solid var(--polvo);
+    border-radius:2px;
+    display:grid;place-items:center;
+    margin-top:1px;
+    transition:background-color .15s ease,border-color .15s ease;
+  }
+  .caja svg{width:14px;height:14px;opacity:0;transition:opacity .15s ease}
+  .permiso input:checked ~ .caja{background:var(--rubor);border-color:var(--rubor)}
+  .permiso input:checked ~ .caja svg{opacity:1}
+  .permiso input:focus-visible ~ .caja{outline:2px solid var(--crema);outline-offset:3px}
+  .permiso .texto{font-size:14.5px;line-height:1.5;color:var(--polvo)}
+  .permiso .texto strong{color:var(--crema);font-weight:500;display:block;font-size:16px;margin-bottom:4px}
+
+  .boton{
+    height:60px;
+    border:0;
+    border-radius:2px;
+    background:var(--rubor);
+    color:#1A1016;
+    font:600 16px/1 var(--sans);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:background-color .2s ease,transform .1s ease;
+  }
+  .boton:hover{background:#E4B7B0}
+  .boton:active{transform:scale(.99)}
+  .boton:focus-visible{outline:2px solid var(--crema);outline-offset:3px}
+  .boton[disabled]{opacity:.7;cursor:progress}
+
+  .nota{margin:-6px 0 0;font-size:14px;color:var(--polvo);line-height:1.5}
+  .trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  #e-envio{text-align:center;margin-top:-8px}
+  .privacidad{margin:0;font-size:13px;color:rgba(163,157,168,.8);line-height:1.5;border-top:1px solid var(--hilo);padding-top:18px}
+
+  /* ---------- confirmación ---------- */
+  .listo{display:grid;gap:18px}
+  .listo h2{font-size:clamp(36px,5vw,50px)}
+  .listo h2 em{font-style:italic;color:var(--rubor)}
+  .listo h2:focus{outline:none}
+  .boleto{
+    display:grid;
+    gap:0;
+    border-top:1px solid var(--hilo);
+    margin-top:6px;
+  }
+  .boleto div{
+    display:grid;
+    grid-template-columns:92px 1fr;
+    gap:12px;
+    padding:14px 0;
+    border-bottom:1px solid var(--hilo);
+    font-size:16px;
+  }
+  .boleto dt{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--polvo);padding-top:3px}
+  .boleto dd{margin:0}
+  .acciones{display:grid;gap:10px;margin-top:8px}
+  .linea{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:54px;
+    border:1px solid var(--rubor);
+    color:var(--crema);
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    transition:background-color .2s ease,color .2s ease;
+  }
+  .linea:hover{background:var(--rubor);color:#1A1016}
+  .linea:focus-visible{outline:2px solid var(--crema);outline-offset:3px}
+  .linea.llena{background:var(--rubor);color:#1A1016;height:58px}
+  .linea.llena:hover{background:#E4B7B0}
+  .apoyo{margin:2px 0 0;font-size:14px;color:var(--polvo);text-align:center}
+  .amiga{
+    display:grid;
+    gap:8px;
+    padding:20px 0 4px;
+    border-top:1px solid var(--hilo);
+  }
+  .amiga p{margin:0}
+  .amiga p:not(.ceja){color:var(--polvo);font-size:15.5px;margin-bottom:6px}
+  .acciones.dos{border-top:1px solid var(--hilo);padding-top:18px}
+  @media (min-width:520px){.acciones.dos{grid-template-columns:1fr 1fr}}
+
+  .panel.hecho .listo{animation:aparece .6s cubic-bezier(.2,.7,.2,1) both}
+  .panel.hecho .listo h2 em{display:inline-block;animation:nombre .8s cubic-bezier(.16,.9,.24,1) .15s both}
+  @keyframes aparece{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @keyframes nombre{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  /* ---------- detalles ---------- */
+  .detalles{display:grid;gap:clamp(34px,5vw,48px)}
+  .datos{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));
+    gap:0;
+    border-top:1px solid var(--hilo);
+    margin-top:18px;
+  }
+  .dato{padding:18px 0;border-bottom:1px solid var(--hilo);display:grid;gap:6px}
+  @media (min-width:560px){.dato:nth-child(odd){padding-right:24px}}
+  .dato .etiqueta{font-size:12px}
+  .dato p{margin:0;font-size:17px;line-height:1.45}
+  .dato p small{display:block;color:var(--polvo);font-size:15px}
+  .dato a{color:var(--rubor);text-underline-offset:3px}
+  .dato a:focus-visible{outline:2px solid var(--crema);outline-offset:3px}
+
+  blockquote{
+    margin:0;
+    padding:0 0 0 22px;
+    border-left:1px solid var(--rubor);
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(20px,2.4vw,24px);
+    line-height:1.45;
+    color:var(--crema);
+    max-width:36ch;
+  }
+  blockquote footer{
+    margin-top:12px;
+    font-family:var(--sans);
+    font-style:normal;
+    font-size:13px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--polvo);
+  }
+
+  .pie{
+    max-width:1180px;
+    margin:0 auto;
+    padding:28px var(--margen) 40px;
+    border-top:1px solid var(--hilo);
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 24px;
+    justify-content:space-between;
+    font-size:13.5px;
+    color:var(--polvo);
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{transition-duration:1ms!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="velo" aria-hidden="true">
+  <img class="velo-foto" src="https://vevvouhnytkfkvrwlfoh.supabase.co/storage/v1/object/public/medios/fondo.jpg" alt="">
+  <video id="velo-video" muted loop playsinline data-src="https://vevvouhnytkfkvrwlfoh.supabase.co/storage/v1/object/public/medios/fondo.mp4"></video>
+</div>
+
+<div class="pagina">
+
+  <section class="invitacion" aria-labelledby="titulo">
+    <div class="cabeza">
+      <p class="ceja">Sábado 19 de septiembre · <span class="junto">10:00 a. m.</span></p>
+      <h1 id="titulo">Piel de <em>Ángel</em></h1>
+      <p class="lema">Clase de maquillaje profesional.<span>La piel primero. Siempre.</span></p>
+      <a class="ir" href="#confirmar">Confirmar mi lugar <span aria-hidden="true">↓</span></a>
+    </div>
+
+    <div class="retrato">
+      <div class="espejo"><img src="https://vevvouhnytkfkvrwlfoh.supabase.co/storage/v1/object/public/medios/angel.jpg" alt="Ángel Guerra, maquillador profesional, sonriendo con saco vino tinto" width="448" height="706"></div>
+      <div class="firma">
+        <p class="ceja">Con</p>
+        <p class="nombre">Ángel Guerra</p>
+        <p class="oficio">Estilista, maquillador profesional e instructor</p>
+      </div>
+      <ul class="credenciales">
+        <li>20+ años en la industria de la belleza</li>
+        <li>40+ maquilladores formados</li>
+        <li>Venezuela · Florida · Utah</li>
+      </ul>
+    </div>
+
+    <div class="aprender">
+      <div>
+        <p class="ceja">Lo que aprenderás el sábado</p>
+        <h2>El maquillaje no empieza en la base. Empieza en la piel.</h2>
+      </div>
+      <ol>
+        <li><span class="n">01</span><span>La rutina profesional para preparar la piel, paso a paso</span></li>
+        <li><span class="n">02</span><span>Los errores que arruinan un maquillaje sin que te des cuenta</span></li>
+        <li><span class="n">03</span><span>El antes y el después de nuestra modelo, maquillada en vivo</span></li>
+      </ol>
+      <p class="metodo">El método Piel de Ángel: <b>Preparación</b><i>·</i><b>Selección</b><i>·</i><b>Aplicación</b><i>·</i><b>Sellado</b></p>
+    </div>
+  </section>
+
+  <section class="confirmar" id="confirmar" aria-labelledby="titulo-confirmar">
+    <div class="panel" id="panel">
+
+      <div id="bloque-form">
+        <p class="ceja">Confirma tu asistencia</p>
+        <h2 id="titulo-confirmar">Confirma tu lugar para el sábado.</h2>
+        <p class="intro">Si te anotaste o una amiga te pasó este enlace, deja tus datos aquí. Así contamos contigo y te llega el recordatorio.</p>
+
+        <form id="form" novalidate>
+          <div class="campo" id="c-nombre">
+            <label class="etiqueta" for="nombre">Nombre y apellido</label>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="120" placeholder="Ej. María González" aria-describedby="e-nombre">
+            <p class="error" id="e-nombre" aria-live="polite"></p>
+          </div>
+
+          <div class="campo" id="c-tel">
+            <label class="etiqueta" for="telefono">WhatsApp</label>
+            <div class="tel">
+              <div class="select-envoltura">
+                <select id="pais" name="pais" aria-label="Código de país">
+                  <option value="1" selected>🇺🇸 +1</option>
+                  <option value="52">🇲🇽 +52</option>
+                  <option value="58">🇻🇪 +58</option>
+                  <option value="57">🇨🇴 +57</option>
+                  <option value="503">🇸🇻 +503</option>
+                  <option value="502">🇬🇹 +502</option>
+                  <option value="504">🇭🇳 +504</option>
+                  <option value="505">🇳🇮 +505</option>
+                  <option value="506">🇨🇷 +506</option>
+                  <option value="507">🇵🇦 +507</option>
+                  <option value="51">🇵🇪 +51</option>
+                  <option value="593">🇪🇨 +593</option>
+                  <option value="591">🇧🇴 +591</option>
+                  <option value="56">🇨🇱 +56</option>
+                  <option value="54">🇦🇷 +54</option>
+                  <option value="598">🇺🇾 +598</option>
+                  <option value="595">🇵🇾 +595</option>
+                  <option value="53">🇨🇺 +53</option>
+                  <option value="34">🇪🇸 +34</option>
+                </select>
+              </div>
+              <input type="tel" id="telefono" name="telefono" inputmode="tel" autocomplete="tel-national" placeholder="801 555 0123" aria-describedby="e-tel">
+            </div>
+            <p class="error" id="e-tel" aria-live="polite"></p>
+          </div>
+
+          <div class="campo" id="c-correo">
+            <label class="etiqueta" for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" autocomplete="email" inputmode="email" placeholder="tucorreo@ejemplo.com" aria-describedby="e-correo">
+            <p class="error" id="e-correo" aria-live="polite"></p>
+          </div>
+
+          <fieldset id="c-edad" aria-describedby="e-edad">
+            <legend class="etiqueta">Edad</legend>
+            <div class="edades">
+              <label class="chip"><input type="radio" name="edad" value="menos-18"><span>Menos de 18</span></label>
+              <label class="chip"><input type="radio" name="edad" value="18-24"><span>18–24</span></label>
+              <label class="chip"><input type="radio" name="edad" value="25-34"><span>25–34</span></label>
+              <label class="chip"><input type="radio" name="edad" value="35-44"><span>35–44</span></label>
+              <label class="chip"><input type="radio" name="edad" value="45-54"><span>45–54</span></label>
+              <label class="chip"><input type="radio" name="edad" value="55-mas"><span>55 o más</span></label>
+            </div>
+            <p class="error" id="e-edad" aria-live="polite"></p>
+          </fieldset>
+
+          <fieldset id="c-meta" aria-describedby="e-meta">
+            <legend class="etiqueta">¿Qué te gustaría lograr?</legend>
+            <label class="opcion">
+              <input type="radio" name="meta" value="mi-imagen">
+              <span class="cuerpo"><span class="punto"></span><span>Maquillarme mejor y dominar mi propia imagen</span></span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="meta" value="profesional">
+              <span class="cuerpo"><span class="punto"></span><span>Maquillar a otras personas profesionalmente</span></span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="meta" value="ingresos">
+              <span class="cuerpo"><span class="punto"></span><span>Convertir el maquillaje en una fuente de ingresos</span></span>
+            </label>
+            <p class="error" id="e-meta" aria-live="polite"></p>
+          </fieldset>
+
+          <label class="permiso">
+            <input type="checkbox" id="promos" name="promos">
+            <span class="caja" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7.4 5.6 10.3 11.5 3.8" stroke="#1A1016" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="texto"><strong>Quiero enterarme de las próximas clases y cursos</strong>Acepto recibir de Ángel Guerra avisos de clases y cursos de maquillaje por WhatsApp, mensaje de texto y correo. No es requisito para asistir. Pueden aplicar tarifas de mensajes y datos. Me doy de baja cuando quiera respondiendo BAJA.</span>
+          </label>
+
+          <div class="trampa" aria-hidden="true">
+            <label>Sitio web <input type="text" id="sitio_web" name="sitio_web" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <button class="boton" type="submit" id="enviar">Confirmar mi lugar</button>
+          <p class="error" id="e-envio" role="alert"></p>
+          <p class="nota">Al confirmar podrás avisarle a Ángel por WhatsApp, y te llegará un recordatorio de esta clase.</p>
+          <p class="privacidad">Tus datos los usa solo Ángel Guerra para esta clase y, si lo autorizas, para avisarte de nuevas clases. No se venden ni se comparten.</p>
+        </form>
+      </div>
+
+      <div class="listo" id="listo" hidden>
+        <p class="ceja">Asistencia confirmada</p>
+        <h2 id="titulo-listo" tabindex="-1">Te esperamos, <em id="nombre-listo">María</em>.</h2>
+        <dl class="boleto">
+          <div><dt>Cuándo</dt><dd>Sábado 19 de septiembre<br>10:00 a. m.</dd></div>
+          <div><dt>Dónde</dt><dd>1091 South Jordan Parkway, Unit 200<br>South Jordan, Utah</dd></div>
+          <div><dt>Referencia</dt><dd>Diagonal a Domino's Pizza</dd></div>
+        </dl>
+        <div class="acciones">
+          <a class="linea llena" id="avisar" href="#" target="_blank" rel="noopener">Avísale a Ángel por WhatsApp</a>
+          <p class="apoyo">Se abre tu WhatsApp con el mensaje listo. Solo tocas enviar.</p>
+        </div>
+        <div class="amiga">
+          <p class="ceja">¿Vienes con una amiga?</p>
+          <p>Mándale el enlace para que confirme su lugar también.</p>
+          <a class="linea" id="invitar" href="#" target="_blank" rel="noopener">Invitar a una amiga</a>
+        </div>
+        <div class="acciones dos">
+          <a class="linea" id="calendario" href="#" target="_blank" rel="noopener">Agregar a mi calendario</a>
+          <a class="linea" id="mapa" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="detalles" aria-labelledby="titulo-detalles">
+    <div>
+      <p class="ceja">El día</p>
+      <h2 id="titulo-detalles">Cuándo y dónde</h2>
+      <div class="datos">
+        <div class="dato">
+          <span class="etiqueta">Cuándo</span>
+          <p>Sábado 19 de septiembre<small>10:00 a. m.</small></p>
+        </div>
+        <div class="dato">
+          <span class="etiqueta">Dónde</span>
+          <p>1091 South Jordan Parkway, Unit 200<small>South Jordan, Utah · diagonal a Domino's Pizza</small></p>
+        </div>
+        <div class="dato">
+          <span class="etiqueta">Cómo llegar</span>
+          <p><a id="mapa-2" href="#" target="_blank" rel="noopener">Abrir en Google Maps</a></p>
+        </div>
+        <div class="dato">
+          <span class="etiqueta">En vivo</span>
+          <p>Demostración con modelo<small>Técnica Fond de Teint, paso a paso</small></p>
+        </div>
+      </div>
+    </div>
+
+    <blockquote>
+      La belleza puede comenzar como una pasión, pero con conocimiento, disciplina y visión también puede convertirse en una profesión.
+      <footer>Ángel Guerra</footer>
+    </blockquote>
+  </section>
+
+</div>
+
+<footer class="pie">
+  <span>Ángel Guerra · @angelantiage</span>
+  <span>Piel de Ángel · South Jordan, Utah</span>
+</footer>
+
+<script>
+  (function(){
+    var WHATSAPP_ANGEL = '13855562910';
+    var SUPABASE_URL = 'https://vevvouhnytkfkvrwlfoh.supabase.co';
+    var SUPABASE_LLAVE = 'sb_publishable_nJiWG8fAvfaye3XLHdEB7A_GrYFXwua';
+    var DIRECCION = '1091 South Jordan Parkway, Unit 200, South Jordan, UT';
+    var mapa = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(DIRECCION);
+    var calendario = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+      + '&text=' + encodeURIComponent('Piel de Ángel · Clase de maquillaje profesional')
+      + '&dates=20260919T160000Z/20260919T180000Z'
+      + '&details=' + encodeURIComponent('Clase de maquillaje profesional con Ángel Guerra. Referencia: diagonal a Domino\'s Pizza.')
+      + '&location=' + encodeURIComponent(DIRECCION);
+
+    var video = document.getElementById('velo-video');
+    var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ahorro = navigator.connection && navigator.connection.saveData;
+    if (video && !quieto && !ahorro){
+      video.muted = true;
+      video.defaultMuted = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('autoplay', '');
+      video.src = video.getAttribute('data-src');
+
+      var arrancar = function(){
+        var intento = video.play();
+        if (intento && intento.catch){
+          intento.catch(function(err){
+            video.setAttribute('data-bloqueo', err && err.name ? err.name : 'desconocido');
+            ['touchstart','pointerdown','scroll','keydown'].forEach(function(ev){
+              window.addEventListener(ev, function unaVez(){
+                video.play().catch(function(){});
+                window.removeEventListener(ev, unaVez);
+              }, {passive:true});
+            });
+          });
+        }
+      };
+      video.addEventListener('playing', function(){ video.classList.add('en-vivo'); });
+      video.addEventListener('canplay', arrancar, {once:true});
+      document.addEventListener('visibilitychange', function(){
+        if (!document.hidden && video.paused) video.play().catch(function(){});
+      });
+      arrancar();
+    }
+
+    document.getElementById('mapa').href = mapa;
+    document.getElementById('mapa-2').href = mapa;
+    document.getElementById('calendario').href = calendario;
+
+    var form = document.getElementById('form');
+    var boton = document.getElementById('enviar');
+    var campos = {
+      nombre: document.getElementById('nombre'),
+      pais: document.getElementById('pais'),
+      telefono: document.getElementById('telefono'),
+      correo: document.getElementById('correo')
+    };
+
+    function marcar(id, errorId, mensaje){
+      var cont = document.getElementById(id);
+      var err = document.getElementById(errorId);
+      if (mensaje){ cont.classList.add('mal'); err.textContent = mensaje; }
+      else { cont.classList.remove('mal'); err.textContent = ''; }
+      return !mensaje;
+    }
+
+    function validarNombre(){
+      var v = campos.nombre.value.trim();
+      return marcar('c-nombre','e-nombre', v.length < 2 ? 'Escribe tu nombre para anotarte.' : '');
+    }
+    function digitos(){ return campos.telefono.value.replace(/\D/g,''); }
+    function validarTel(){
+      var d = digitos(), pais = campos.pais.value, msg = '';
+      if (!d.length) msg = 'Escribe tu número de WhatsApp.';
+      else if (pais === '1' && d.length !== 10) msg = 'Revisa el número: en Estados Unidos son 10 dígitos.';
+      else if (pais !== '1' && (d.length < 7 || d.length > 12)) msg = 'Revisa el número: parece incompleto.';
+      return marcar('c-tel','e-tel', msg);
+    }
+    function validarCorreo(){
+      var v = campos.correo.value.trim(), msg = '';
+      if (!v) msg = 'Escribe tu correo.';
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) msg = 'Ese correo parece incompleto. Revísalo.';
+      return marcar('c-correo','e-correo', msg);
+    }
+    function validarEdad(){
+      var elegido = form.querySelector('input[name=edad]:checked');
+      return marcar('c-edad','e-edad', elegido ? '' : 'Elige tu rango de edad.');
+    }
+    function validarMeta(){
+      var elegido = form.querySelector('input[name=meta]:checked');
+      return marcar('c-meta','e-meta', elegido ? '' : 'Elige la opción que más se parezca a ti.');
+    }
+
+    campos.nombre.addEventListener('blur', function(){ if (campos.nombre.value) validarNombre(); });
+    campos.telefono.addEventListener('blur', function(){ if (campos.telefono.value) validarTel(); });
+    campos.correo.addEventListener('blur', function(){ if (campos.correo.value) validarCorreo(); });
+    form.querySelectorAll('input[name=meta]').forEach(function(r){ r.addEventListener('change', validarMeta); });
+    form.querySelectorAll('input[name=edad]').forEach(function(r){ r.addEventListener('change', validarEdad); });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var ok = [validarNombre(), validarTel(), validarCorreo(), validarEdad(), validarMeta()];
+      if (ok.indexOf(false) !== -1){
+        var primero = form.querySelector('.mal input, .mal select, fieldset.mal input');
+        if (primero) primero.focus();
+        return;
+      }
+
+      var registro = {
+        nombre: campos.nombre.value.trim(),
+        telefono: '+' + campos.pais.value + digitos(),
+        correo: campos.correo.value.trim().toLowerCase(),
+        edad: form.querySelector('input[name=edad]:checked').value,
+        meta: form.querySelector('input[name=meta]:checked').value,
+        acepta_promos: document.getElementById('promos').checked
+      };
+
+      var errorEnvio = document.getElementById('e-envio');
+      errorEnvio.textContent = '';
+      boton.disabled = true;
+      boton.textContent = 'Confirmando…';
+
+      var esRobot = document.getElementById('sitio_web').value !== '';
+      var guardar = esRobot
+        ? Promise.resolve({ ok: true })
+        : fetch(SUPABASE_URL + '/rest/v1/rpc/confirmar_asistencia', {
+            method: 'POST',
+            headers: { 'apikey': SUPABASE_LLAVE, 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              p_nombre: registro.nombre,
+              p_telefono: registro.telefono,
+              p_correo: registro.correo,
+              p_edad: registro.edad,
+              p_meta: registro.meta,
+              p_acepta_promos: registro.acepta_promos
+            })
+          });
+
+      guardar.then(function(respuesta){
+        if (!respuesta.ok) throw new Error('HTTP ' + respuesta.status);
+        mostrarListo(registro);
+      }).catch(function(){
+        boton.disabled = false;
+        boton.textContent = 'Confirmar mi lugar';
+        errorEnvio.textContent = 'No pudimos guardar tu confirmación. Revisa tu conexión e inténtalo otra vez.';
+      });
+    });
+
+    function mostrarListo(registro){
+        var primerNombre = registro.nombre.split(/\s+/)[0];
+        document.getElementById('nombre-listo').textContent = primerNombre;
+
+        var aviso = 'Hola Ángel, soy ' + registro.nombre + '. Ya confirmé mi lugar para Piel de Ángel el sábado 19 de septiembre a las 10:00 a. m. ¡Nos vemos!';
+        document.getElementById('avisar').href = 'https://wa.me/' + WHATSAPP_ANGEL + '?text=' + encodeURIComponent(aviso);
+
+        var enlace = location.origin + location.pathname;
+        var invitacion = 'Voy a ir a Piel de Ángel, una clase de maquillaje profesional con Ángel Guerra, el sábado 19 de septiembre a las 10:00 a. m. en South Jordan. ¿Te animas? Confirma tu lugar aquí: ' + enlace;
+        document.getElementById('invitar').href = 'https://wa.me/?text=' + encodeURIComponent(invitacion);
+        document.getElementById('bloque-form').hidden = true;
+        document.getElementById('listo').hidden = false;
+        document.getElementById('panel').classList.add('hecho');
+        document.getElementById('titulo-listo').focus();
+        document.getElementById('confirmar').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  })();
+</script>
+</body>
+</html>
