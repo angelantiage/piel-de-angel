@@ -423,13 +423,14 @@
   .opcion input:checked + .cuerpo small{color:var(--crema)}
   .ayuda{margin:-2px 0 0;font-size:14px;color:var(--polvo)}
 
-  .cortesia{
-    display:flex;align-items:baseline;justify-content:space-between;gap:12px;
-    border:1px solid var(--rubor);background:var(--rubor-suave);
-    padding:13px 16px;margin:0 0 20px;
-  }
-  .cortesia b{font-size:15px;letter-spacing:.02em}
-  .cortesia span{font-size:14px;color:var(--polvo);text-align:right}
+  .valor{border:1px solid var(--rubor);background:var(--rubor-suave);padding:14px 16px 12px;margin:0 0 20px}
+  .valor div{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:5px 0;font-size:15px}
+  .valor div span{color:var(--polvo)}
+  .valor div b{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .valor .hoy{border-top:1px solid var(--rubor);margin-top:5px;padding-top:10px;font-size:17px}
+  .valor .hoy span{color:var(--crema);font-weight:600;letter-spacing:.02em}
+  .valor .hoy b{font-size:22px;color:var(--rubor)}
+  .valor p{margin:9px 0 0;font-size:13.5px;color:var(--polvo)}
 
   .regalo{
     border:1px solid var(--hilo-fuerte);border-left:3px solid var(--rubor);
@@ -440,8 +441,6 @@
 
   .prueba{padding:0 0 12px}
   .prueba figure{margin:0}
-  .prueba .tira{display:grid;gap:10px;margin-bottom:12px}
-  @media (min-width:640px){.prueba .tira{grid-template-columns:1fr 1fr}}
   .prueba img{width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;display:block;border:1px solid var(--hilo)}
   .prueba figcaption{margin-top:10px;font-size:14.5px;color:var(--polvo);line-height:1.45}
   .prueba figcaption b{color:var(--crema);font-weight:600}
@@ -657,13 +656,9 @@
 
   <section class="prueba">
     <figure>
-      <div class="tira">
-        <img src="salon-19-septiembre.jpg" width="1400" height="1050" loading="lazy" decoding="async"
-             alt="El salón de Piel de Ángel en South Jordan: mujeres sentadas frente a sus materiales y la portada de la clase proyectada en la pared">
-        <img src="salon-19-septiembre-2.jpg" width="1400" height="1050" loading="lazy" decoding="async"
-             alt="La clase en marcha: la demostración proyectada en grande mientras las asistentes siguen el paso a paso desde sus puestos">
-      </div>
-      <figcaption><b>Así estuvo la primera, el 19 de septiembre.</b> Salón montado, tu material en la mesa y la demostración proyectada en grande para que veas cada paso desde tu puesto. Eso mismo es lo que vas a encontrar el 8 y el 10 de octubre.</figcaption>
+      <img src="salon-19-septiembre.jpg" width="1400" height="1050" loading="lazy" decoding="async"
+           alt="El salón de Piel de Ángel en South Jordan: mujeres sentadas frente a sus materiales y la portada de la clase proyectada en la pared">
+      <figcaption><b>Así estuvo la primera, el 19 de septiembre.</b> Salón montado, tu material en la mesa y una modelo maquillada en vivo, ahí mismo, delante de ti. Eso es lo que vas a encontrar el 8 y el 10 de octubre.</figcaption>
     </figure>
   </section>
 
@@ -676,7 +671,12 @@
         <p class="intro">Es la misma clase en dos fechas. Escoge la que mejor te quede, deja tus datos y te sumas al grupo de WhatsApp de ese día.</p>
 
         <form id="form" novalidate>
-          <p class="cortesia"><b>Clase de cortesía</b><span>Cupo limitado · el material lo pongo yo</span></p>
+          <div class="valor">
+            <div><span>Una clase así conmigo</span><b>$300</b></div>
+            <div><span>El material para practicar</span><b>incluido</b></div>
+            <div class="hoy"><span>Hoy</span><b>$0</b></div>
+            <p>Cupo limitado: el salón tiene los puestos que tiene.</p>
+          </div>
 
           <div class="regalo">
             <b>¿Quieres llevarte un regalo?</b>
@@ -838,8 +838,9 @@
         </div>
         <div class="amiga">
           <p class="ceja">Ven con una amiga y llévate un regalo</p>
-          <p>Mándale el enlace para que confirme su lugar. Si las dos llegan, las dos se llevan un regalo sorpresa ese día.</p>
+          <p>Si las dos llegan, las dos se llevan un regalo sorpresa ese día.</p>
           <a class="linea" id="invitar" href="#" target="_blank" rel="noopener">Invitar a una amiga</a>
+          <p class="apoyo">Este enlace lleva tu nombre por dentro: así sé que la trajiste tú. Mándaselo a las que quieras.</p>
         </div>
         <div class="acciones dos">
           <a class="linea" id="calendario" href="#" target="_blank" rel="noopener">Agregar a mi calendario</a>
@@ -904,6 +905,18 @@
     var SUPABASE_URL = 'https://vevvouhnytkfkvrwlfoh.supabase.co';
     var SUPABASE_LLAVE = 'sb_publishable_nJiWG8fAvfaye3XLHdEB7A_GrYFXwua';
     var DIRECCION = '1091 South Jordan Parkway, Unit 200, South Jordan, UT';
+
+    // ¿Vino por el enlace de una amiga? El código viaja en ?a=
+    // Se guarda y se limpia de la barra, para que si ella comparte la página
+    // tal cual no le acredite su visita a la madrina equivocada.
+    var MADRINA = null;
+    try {
+      var p = new URLSearchParams(location.search).get('a');
+      if (p) {
+        MADRINA = p.trim().slice(0, 40) || null;
+        history.replaceState(null, '', location.pathname + location.hash);
+      }
+    } catch (e) {}
     var mapa = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(DIRECCION);
 
     // Las dos fechas. Si cambia una hora, se cambia AQUÍ y también en la tabla
@@ -1085,13 +1098,16 @@
               p_meta: registro.meta,
               p_acepta_promos: registro.acepta_promos,
               p_evento: registro.evento,
-              p_ciudad: registro.ciudad
+              p_ciudad: registro.ciudad,
+              p_invitada_por: MADRINA
             })
           });
 
       guardar.then(function(respuesta){
         if (!respuesta.ok) throw new Error('HTTP ' + respuesta.status);
-        mostrarListo(registro);
+        return respuesta.json ? respuesta.json().catch(function(){ return null; }) : null;
+      }).then(function(codigo){
+        mostrarListo(registro, typeof codigo === 'string' ? codigo : null);
       }).catch(function(){
         boton.disabled = false;
         boton.textContent = 'Confirmar mi lugar';
@@ -1099,7 +1115,7 @@
       });
     });
 
-    function mostrarListo(registro){
+    function mostrarListo(registro, codigo){
         var primerNombre = registro.nombre.split(/\s+/)[0];
         document.getElementById('nombre-listo').textContent = primerNombre;
 
@@ -1109,7 +1125,8 @@
         document.getElementById('grupo').href = dia.grupo;
         document.getElementById('calendario').href = calendarioDe(registro.evento);
 
-        var enlace = location.origin + location.pathname;
+        // El enlace que ella comparte lleva su código: así la base sabe a quién acreditarle
+        var enlace = location.origin + location.pathname + (codigo ? '?a=' + encodeURIComponent(codigo) : '');
         var invitacion = 'Voy a ir a Piel de Ángel, una clase de maquillaje profesional con Ángel Guerra, ' + dia.frase + ' en South Jordan. ¿Te animas? Confirma tu lugar aquí: ' + enlace;
         document.getElementById('invitar').href = 'https://wa.me/?text=' + encodeURIComponent(invitacion);
         document.getElementById('bloque-form').hidden = true;
