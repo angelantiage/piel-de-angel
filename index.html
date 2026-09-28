@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Piel de Ángel · Confirma tu lugar</title>
-<meta name="description" content="Clase de maquillaje profesional con Ángel Guerra. Sábado 19 de septiembre, 10:00 a. m., South Jordan, Utah. Confirma tu lugar.">
+<title>Piel de Ángel · Escoge tu fecha</title>
+<meta name="description" content="Clase de maquillaje profesional con Ángel Guerra. Jueves 8 o sábado 10 de octubre en South Jordan, Utah. Escoge tu fecha y confirma tu lugar.">
 <meta name="theme-color" content="#15131A">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_US">
 <meta property="og:site_name" content="Piel de Ángel">
-<meta property="og:title" content="Piel de Ángel · Confirma tu lugar">
-<meta property="og:description" content="Clase de maquillaje profesional con Ángel Guerra. Sábado 19 de septiembre, 10:00 a. m. · South Jordan, Utah.">
+<meta property="og:title" content="Piel de Ángel · Escoge tu fecha">
+<meta property="og:description" content="Clase de maquillaje profesional con Ángel Guerra. Dos fechas: jueves 8 o sábado 10 de octubre · South Jordan, Utah.">
 <meta property="og:image" content="https://vevvouhnytkfkvrwlfoh.supabase.co/storage/v1/object/public/medios/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -417,6 +417,14 @@
   .opcion input:focus-visible + .cuerpo{outline:2px solid var(--crema);outline-offset:2px}
   fieldset.mal .opcion .cuerpo{border-color:rgba(255,158,145,.6)}
 
+  .opcion.fecha .cuerpo{padding:17px 16px}
+  .opcion.fecha b{display:block;font-weight:600;letter-spacing:.01em}
+  .opcion.fecha small{display:block;margin-top:4px;font-size:14.5px;color:var(--polvo);font-variant-numeric:tabular-nums}
+  .opcion input:checked + .cuerpo small{color:var(--crema)}
+  .ayuda{margin:-2px 0 0;font-size:14px;color:var(--polvo)}
+  #c-otra[hidden]{display:none}
+  .grupo-nota{margin:2px 0 0;font-size:14px;color:var(--polvo);text-align:center}
+
   .permiso{
     display:grid;
     grid-template-columns:24px 1fr;
@@ -588,7 +596,7 @@
 
   <section class="invitacion" aria-labelledby="titulo">
     <div class="cabeza">
-      <p class="ceja">Sábado 19 de septiembre · <span class="junto">10:00 a. m.</span></p>
+      <p class="ceja">Jueves 8 o sábado 10 de octubre · <span class="junto">tú escoges</span></p>
       <h1 id="titulo">Piel de <em>Ángel</em></h1>
       <p class="lema">Clase de maquillaje profesional.<span>La piel primero. Siempre.</span></p>
       <a class="ir" href="#confirmar">Confirmar mi lugar <span aria-hidden="true">↓</span></a>
@@ -610,7 +618,7 @@
 
     <div class="aprender">
       <div>
-        <p class="ceja">Lo que aprenderás el sábado</p>
+        <p class="ceja">Lo que aprenderás ese día</p>
         <h2>El maquillaje no empieza en la base. Empieza en la piel.</h2>
       </div>
       <ol>
@@ -627,10 +635,24 @@
 
       <div id="bloque-form">
         <p class="ceja">Confirma tu asistencia</p>
-        <h2 id="titulo-confirmar">Confirma tu lugar para el sábado.</h2>
-        <p class="intro">Si te anotaste o una amiga te pasó este enlace, deja tus datos aquí. Así contamos contigo y te llega el recordatorio.</p>
+        <h2 id="titulo-confirmar">Escoge tu fecha y confirma tu lugar.</h2>
+        <p class="intro">Es la misma clase en dos fechas. Escoge la que mejor te quede, deja tus datos y te sumas al grupo de WhatsApp de ese día.</p>
 
         <form id="form" novalidate>
+          <fieldset id="c-fecha" aria-describedby="e-fecha">
+            <legend class="etiqueta">¿Qué día te queda mejor?</legend>
+            <label class="opcion fecha">
+              <input type="radio" name="fecha" value="piel-de-angel-2026-10-08">
+              <span class="cuerpo"><span class="punto"></span><span><b>Jueves 8 de octubre</b><small>6:30 p. m. · puertas 6:00</small></span></span>
+            </label>
+            <label class="opcion fecha">
+              <input type="radio" name="fecha" value="piel-de-angel-2026-10-10">
+              <span class="cuerpo"><span class="punto"></span><span><b>Sábado 10 de octubre</b><small>4:00 p. m. · puertas 3:45</small></span></span>
+            </label>
+            <p class="ayuda">Es la misma clase los dos días. Escoge la que mejor te quede.</p>
+            <p class="error" id="e-fecha" aria-live="polite"></p>
+          </fieldset>
+
           <div class="campo" id="c-nombre">
             <label class="etiqueta" for="nombre">Nombre y apellido</label>
             <input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="120" placeholder="Ej. María González" aria-describedby="e-nombre">
@@ -672,6 +694,41 @@
             <label class="etiqueta" for="correo">Correo electrónico</label>
             <input type="email" id="correo" name="correo" autocomplete="email" inputmode="email" placeholder="tucorreo@ejemplo.com" aria-describedby="e-correo">
             <p class="error" id="e-correo" aria-live="polite"></p>
+          </div>
+
+          <div class="campo" id="c-ciudad">
+            <label class="etiqueta" for="ciudad">¿De qué ciudad vienes?</label>
+            <div class="select-envoltura">
+              <select id="ciudad" name="ciudad" aria-describedby="e-ciudad">
+                <option value="" selected>Escoge tu ciudad</option>
+                  <option value="Bluffdale">Bluffdale</option>
+                  <option value="Draper">Draper</option>
+                  <option value="Herriman">Herriman</option>
+                  <option value="Kearns">Kearns</option>
+                  <option value="Lehi">Lehi</option>
+                  <option value="Magna">Magna</option>
+                  <option value="Midvale">Midvale</option>
+                  <option value="Murray">Murray</option>
+                  <option value="Orem">Orem</option>
+                  <option value="Provo">Provo</option>
+                  <option value="Riverton">Riverton</option>
+                  <option value="Salt Lake City">Salt Lake City</option>
+                  <option value="Saratoga Springs">Saratoga Springs</option>
+                  <option value="South Jordan">South Jordan</option>
+                  <option value="South Salt Lake">South Salt Lake</option>
+                  <option value="Taylorsville">Taylorsville</option>
+                  <option value="West Jordan">West Jordan</option>
+                  <option value="West Valley City">West Valley City</option>
+                <option value="otra">Otra ciudad</option>
+              </select>
+            </div>
+            <p class="error" id="e-ciudad" aria-live="polite"></p>
+          </div>
+
+          <div class="campo" id="c-otra" hidden>
+            <label class="etiqueta" for="otra-ciudad">¿Cuál?</label>
+            <input type="text" id="otra-ciudad" name="otra_ciudad" maxlength="60" placeholder="Ej. Tooele" aria-describedby="e-otra">
+            <p class="error" id="e-otra" aria-live="polite"></p>
           </div>
 
           <fieldset id="c-edad" aria-describedby="e-edad">
@@ -716,7 +773,7 @@
 
           <button class="boton" type="submit" id="enviar">Confirmar mi lugar</button>
           <p class="error" id="e-envio" role="alert"></p>
-          <p class="nota">Al confirmar podrás avisarle a Ángel por WhatsApp, y te llegará un recordatorio de esta clase.</p>
+          <p class="nota">Al confirmar entras al grupo de WhatsApp de tu fecha. <b>Los recordatorios se mandan por ahí.</b></p>
           <p class="privacidad">Tus datos los usa solo Ángel Guerra para esta clase y, si lo autorizas, para avisarte de nuevas clases. No se venden ni se comparten.</p>
         </form>
       </div>
@@ -725,13 +782,13 @@
         <p class="ceja">Asistencia confirmada</p>
         <h2 id="titulo-listo" tabindex="-1">Te esperamos, <em id="nombre-listo">María</em>.</h2>
         <dl class="boleto">
-          <div><dt>Cuándo</dt><dd>Sábado 19 de septiembre<br>10:00 a. m.</dd></div>
+          <div><dt>Cuándo</dt><dd id="boleto-cuando">—</dd></div>
           <div><dt>Dónde</dt><dd>1091 South Jordan Parkway, Unit 200<br>South Jordan, Utah</dd></div>
           <div><dt>Referencia</dt><dd>Diagonal a Domino's Pizza</dd></div>
         </dl>
         <div class="acciones">
-          <a class="linea llena" id="avisar" href="#" target="_blank" rel="noopener">Avísale a Ángel por WhatsApp</a>
-          <p class="apoyo">Se abre tu WhatsApp con el mensaje listo. Solo tocas enviar.</p>
+          <a class="linea llena" id="grupo" href="#" target="_blank" rel="noopener">Entrar al grupo de WhatsApp</a>
+          <p class="apoyo"><b>Por ese grupo se mandan los recordatorios</b> y los detalles del día. Es el grupo de tu fecha: entra ahorita para que no se te pase.</p>
         </div>
         <div class="amiga">
           <p class="ceja">¿Vienes con una amiga?</p>
@@ -753,8 +810,12 @@
       <h2 id="titulo-detalles">Cuándo y dónde</h2>
       <div class="datos">
         <div class="dato">
-          <span class="etiqueta">Cuándo</span>
-          <p>Sábado 19 de septiembre<small>10:00 a. m.</small></p>
+          <span class="etiqueta">Cuándo · opción 1</span>
+          <p>Jueves 8 de octubre<small>6:30 p. m. · puertas 6:00</small></p>
+        </div>
+        <div class="dato">
+          <span class="etiqueta">Cuándo · opción 2</span>
+          <p>Sábado 10 de octubre<small>4:00 p. m. · puertas 3:45</small></p>
         </div>
         <div class="dato">
           <span class="etiqueta">Dónde</span>
@@ -786,16 +847,35 @@
 
 <script>
   (function(){
-    var WHATSAPP_ANGEL = '13855562910';
     var SUPABASE_URL = 'https://vevvouhnytkfkvrwlfoh.supabase.co';
     var SUPABASE_LLAVE = 'sb_publishable_nJiWG8fAvfaye3XLHdEB7A_GrYFXwua';
     var DIRECCION = '1091 South Jordan Parkway, Unit 200, South Jordan, UT';
     var mapa = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(DIRECCION);
-    var calendario = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-      + '&text=' + encodeURIComponent('Piel de Ángel · Clase de maquillaje profesional')
-      + '&dates=20260919T160000Z/20260919T180000Z'
-      + '&details=' + encodeURIComponent('Clase de maquillaje profesional con Ángel Guerra. Referencia: diagonal a Domino\'s Pizza.')
-      + '&location=' + encodeURIComponent(DIRECCION);
+
+    // Las dos fechas. Si cambia una hora, se cambia AQUÍ y también en la tabla
+    // `eventos` de Supabase: las dos tienen que decir lo mismo.
+    var EVENTOS = {
+      'piel-de-angel-2026-10-08': {
+        frase:  'el jueves 8 de octubre a las 6:30 p. m.',
+        boleto: 'Jueves 8 de octubre<br>6:30 p. m. · puertas 6:00',
+        grupo:  'https://chat.whatsapp.com/HXT4qqcPpTZHWA5byz5VGU',
+        fechas: '20261009T003000Z/20261009T023000Z'
+      },
+      'piel-de-angel-2026-10-10': {
+        frase:  'el sábado 10 de octubre a las 4:00 p. m.',
+        boleto: 'Sábado 10 de octubre<br>4:00 p. m. · puertas 3:45',
+        grupo:  'https://chat.whatsapp.com/GDnxTQhpWa23OtYgwmK2aF',
+        fechas: '20261010T220000Z/20261011T000000Z'
+      }
+    };
+
+    function calendarioDe(evento){
+      return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+        + '&text=' + encodeURIComponent('Piel de Ángel · Clase de maquillaje profesional')
+        + '&dates=' + EVENTOS[evento].fechas
+        + '&details=' + encodeURIComponent('Clase de maquillaje profesional con Ángel Guerra. Referencia: diagonal a Domino\'s Pizza.')
+        + '&location=' + encodeURIComponent(DIRECCION);
+    }
 
     var video = document.getElementById('velo-video');
     var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -831,7 +911,6 @@
 
     document.getElementById('mapa').href = mapa;
     document.getElementById('mapa-2').href = mapa;
-    document.getElementById('calendario').href = calendario;
 
     var form = document.getElementById('form');
     var boton = document.getElementById('enviar');
@@ -839,8 +918,23 @@
       nombre: document.getElementById('nombre'),
       pais: document.getElementById('pais'),
       telefono: document.getElementById('telefono'),
-      correo: document.getElementById('correo')
+      correo: document.getElementById('correo'),
+      ciudad: document.getElementById('ciudad'),
+      otra: document.getElementById('otra-ciudad')
     };
+
+    // "Otra ciudad" abre el campo de texto
+    campos.ciudad.addEventListener('change', function(){
+      var otra = campos.ciudad.value === 'otra';
+      document.getElementById('c-otra').hidden = !otra;
+      if (otra) campos.otra.focus(); else marcar('c-otra','e-otra','');
+      validarCiudad();
+    });
+
+    function ciudadElegida(){
+      if (campos.ciudad.value === 'otra') return campos.otra.value.trim();
+      return campos.ciudad.value;
+    }
 
     function marcar(id, errorId, mensaje){
       var cont = document.getElementById(id);
@@ -868,6 +962,17 @@
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) msg = 'Ese correo parece incompleto. Revísalo.';
       return marcar('c-correo','e-correo', msg);
     }
+    function validarFecha(){
+      var elegido = form.querySelector('input[name=fecha]:checked');
+      return marcar('c-fecha','e-fecha', elegido ? '' : 'Escoge el día que te queda mejor.');
+    }
+    function validarCiudad(){
+      if (!campos.ciudad.value) return marcar('c-ciudad','e-ciudad', 'Escoge tu ciudad.');
+      marcar('c-ciudad','e-ciudad','');
+      if (campos.ciudad.value === 'otra')
+        return marcar('c-otra','e-otra', ciudadElegida().length < 2 ? 'Escribe tu ciudad.' : '');
+      return marcar('c-otra','e-otra','');
+    }
     function validarEdad(){
       var elegido = form.querySelector('input[name=edad]:checked');
       return marcar('c-edad','e-edad', elegido ? '' : 'Elige tu rango de edad.');
@@ -882,10 +987,12 @@
     campos.correo.addEventListener('blur', function(){ if (campos.correo.value) validarCorreo(); });
     form.querySelectorAll('input[name=meta]').forEach(function(r){ r.addEventListener('change', validarMeta); });
     form.querySelectorAll('input[name=edad]').forEach(function(r){ r.addEventListener('change', validarEdad); });
+    form.querySelectorAll('input[name=fecha]').forEach(function(r){ r.addEventListener('change', validarFecha); });
+    campos.otra.addEventListener('blur', function(){ if (campos.ciudad.value === 'otra') validarCiudad(); });
 
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      var ok = [validarNombre(), validarTel(), validarCorreo(), validarEdad(), validarMeta()];
+      var ok = [validarFecha(), validarNombre(), validarTel(), validarCorreo(), validarCiudad(), validarEdad(), validarMeta()];
       if (ok.indexOf(false) !== -1){
         var primero = form.querySelector('.mal input, .mal select, fieldset.mal input');
         if (primero) primero.focus();
@@ -893,6 +1000,8 @@
       }
 
       var registro = {
+        evento: form.querySelector('input[name=fecha]:checked').value,
+        ciudad: ciudadElegida(),
         nombre: campos.nombre.value.trim(),
         telefono: '+' + campos.pais.value + digitos(),
         correo: campos.correo.value.trim().toLowerCase(),
@@ -918,7 +1027,9 @@
               p_correo: registro.correo,
               p_edad: registro.edad,
               p_meta: registro.meta,
-              p_acepta_promos: registro.acepta_promos
+              p_acepta_promos: registro.acepta_promos,
+              p_evento: registro.evento,
+              p_ciudad: registro.ciudad
             })
           });
 
@@ -936,11 +1047,13 @@
         var primerNombre = registro.nombre.split(/\s+/)[0];
         document.getElementById('nombre-listo').textContent = primerNombre;
 
-        var aviso = 'Hola Ángel, soy ' + registro.nombre + '. Ya confirmé mi lugar para Piel de Ángel el sábado 19 de septiembre a las 10:00 a. m. ¡Nos vemos!';
-        document.getElementById('avisar').href = 'https://wa.me/' + WHATSAPP_ANGEL + '?text=' + encodeURIComponent(aviso);
+        var dia = EVENTOS[registro.evento];
+        document.getElementById('boleto-cuando').innerHTML = dia.boleto;
+        document.getElementById('grupo').href = dia.grupo;
+        document.getElementById('calendario').href = calendarioDe(registro.evento);
 
         var enlace = location.origin + location.pathname;
-        var invitacion = 'Voy a ir a Piel de Ángel, una clase de maquillaje profesional con Ángel Guerra, el sábado 19 de septiembre a las 10:00 a. m. en South Jordan. ¿Te animas? Confirma tu lugar aquí: ' + enlace;
+        var invitacion = 'Voy a ir a Piel de Ángel, una clase de maquillaje profesional con Ángel Guerra, ' + dia.frase + ' en South Jordan. ¿Te animas? Confirma tu lugar aquí: ' + enlace;
         document.getElementById('invitar').href = 'https://wa.me/?text=' + encodeURIComponent(invitacion);
         document.getElementById('bloque-form').hidden = true;
         document.getElementById('listo').hidden = false;
