@@ -422,6 +422,31 @@
   .opcion.fecha small{display:block;margin-top:4px;font-size:14.5px;color:var(--polvo);font-variant-numeric:tabular-nums}
   .opcion input:checked + .cuerpo small{color:var(--crema)}
   .ayuda{margin:-2px 0 0;font-size:14px;color:var(--polvo)}
+
+  .cortesia{
+    display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+    border:1px solid var(--rubor);background:var(--rubor-suave);
+    padding:13px 16px;margin:0 0 20px;
+  }
+  .cortesia b{font-size:15px;letter-spacing:.02em}
+  .cortesia span{font-size:14px;color:var(--polvo);text-align:right}
+
+  .regalo{
+    border:1px solid var(--hilo-fuerte);border-left:3px solid var(--rubor);
+    background:var(--pozo);padding:14px 16px;margin:4px 0 20px;
+  }
+  .regalo b{display:block;font-size:15.5px;margin-bottom:3px}
+  .regalo span{display:block;font-size:14.5px;line-height:1.45;color:var(--polvo)}
+
+  .prueba{padding:0 0 12px}
+  .prueba figure{margin:0}
+  .prueba .tira{display:grid;gap:10px;margin-bottom:12px}
+  @media (min-width:640px){.prueba .tira{grid-template-columns:1fr 1fr}}
+  .prueba img{width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;display:block;border:1px solid var(--hilo)}
+  .prueba figcaption{margin-top:10px;font-size:14.5px;color:var(--polvo);line-height:1.45}
+  .prueba figcaption b{color:var(--crema);font-weight:600}
+
+  .boleto-titulo{margin:0 0 -4px;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--polvo)}
   #c-otra[hidden]{display:none}
   .grupo-nota{margin:2px 0 0;font-size:14px;color:var(--polvo);text-align:center}
 
@@ -630,6 +655,18 @@
     </div>
   </section>
 
+  <section class="prueba">
+    <figure>
+      <div class="tira">
+        <img src="salon-19-septiembre.jpg" width="1400" height="1050" loading="lazy" decoding="async"
+             alt="El salón de Piel de Ángel en South Jordan: mujeres sentadas frente a sus materiales y la portada de la clase proyectada en la pared">
+        <img src="salon-19-septiembre-2.jpg" width="1400" height="1050" loading="lazy" decoding="async"
+             alt="La clase en marcha: la demostración proyectada en grande mientras las asistentes siguen el paso a paso desde sus puestos">
+      </div>
+      <figcaption><b>Así estuvo la primera, el 19 de septiembre.</b> Salón montado, tu material en la mesa y la demostración proyectada en grande para que veas cada paso desde tu puesto. Eso mismo es lo que vas a encontrar el 8 y el 10 de octubre.</figcaption>
+    </figure>
+  </section>
+
   <section class="confirmar" id="confirmar" aria-labelledby="titulo-confirmar">
     <div class="panel" id="panel">
 
@@ -639,6 +676,13 @@
         <p class="intro">Es la misma clase en dos fechas. Escoge la que mejor te quede, deja tus datos y te sumas al grupo de WhatsApp de ese día.</p>
 
         <form id="form" novalidate>
+          <p class="cortesia"><b>Clase de cortesía</b><span>Cupo limitado · el material lo pongo yo</span></p>
+
+          <div class="regalo">
+            <b>¿Quieres llevarte un regalo?</b>
+            <span>Ven con una amiga y las dos se llevan un regalo sorpresa el día de la clase. Solo tiene que confirmar su lugar y llegar contigo.</span>
+          </div>
+
           <fieldset id="c-fecha" aria-describedby="e-fecha">
             <legend class="etiqueta">¿Qué día te queda mejor?</legend>
             <label class="opcion fecha">
@@ -741,6 +785,7 @@
               <label class="chip"><input type="radio" name="edad" value="45-54"><span>45–54</span></label>
               <label class="chip"><input type="radio" name="edad" value="55-mas"><span>55 o más</span></label>
             </div>
+            <p class="ayuda">¿Menos de 18? Ven con un adulto.</p>
             <p class="error" id="e-edad" aria-live="polite"></p>
           </fieldset>
 
@@ -780,7 +825,8 @@
 
       <div class="listo" id="listo" hidden>
         <p class="ceja">Asistencia confirmada</p>
-        <h2 id="titulo-listo" tabindex="-1">Te esperamos, <em id="nombre-listo">María</em>.</h2>
+        <h2 id="titulo-listo" tabindex="-1"><span id="nos-vemos">Nos vemos</span>, <em id="nombre-listo">María</em>.</h2>
+        <p class="boleto-titulo">Tu boleto</p>
         <dl class="boleto">
           <div><dt>Cuándo</dt><dd id="boleto-cuando">—</dd></div>
           <div><dt>Dónde</dt><dd>1091 South Jordan Parkway, Unit 200<br>South Jordan, Utah</dd></div>
@@ -791,8 +837,8 @@
           <p class="apoyo"><b>Por ese grupo se mandan los recordatorios</b> y los detalles del día. Es el grupo de tu fecha: entra ahorita para que no se te pase.</p>
         </div>
         <div class="amiga">
-          <p class="ceja">¿Vienes con una amiga?</p>
-          <p>Mándale el enlace para que confirme su lugar también.</p>
+          <p class="ceja">Ven con una amiga y llévate un regalo</p>
+          <p>Mándale el enlace para que confirme su lugar. Si las dos llegan, las dos se llevan un regalo sorpresa ese día.</p>
           <a class="linea" id="invitar" href="#" target="_blank" rel="noopener">Invitar a una amiga</a>
         </div>
         <div class="acciones dos">
@@ -829,6 +875,14 @@
           <span class="etiqueta">En vivo</span>
           <p>Demostración con modelo<small>Técnica Fond de Teint, paso a paso</small></p>
         </div>
+        <div class="dato">
+          <span class="etiqueta">Qué llevar</span>
+          <p>Nada<small>El material para practicar lo pongo yo</small></p>
+        </div>
+        <div class="dato">
+          <span class="etiqueta">Te recibimos con</span>
+          <p>Café y algo de picar<small>Llega con tiempo y nos conocemos antes de empezar</small></p>
+        </div>
       </div>
     </div>
 
@@ -857,12 +911,14 @@
     var EVENTOS = {
       'piel-de-angel-2026-10-08': {
         frase:  'el jueves 8 de octubre a las 6:30 p. m.',
+        cita:   'Nos vemos el jueves 8 a las 6:30 en South Jordan',
         boleto: 'Jueves 8 de octubre<br>6:30 p. m. · puertas 6:00',
         grupo:  'https://chat.whatsapp.com/HXT4qqcPpTZHWA5byz5VGU',
         fechas: '20261009T003000Z/20261009T023000Z'
       },
       'piel-de-angel-2026-10-10': {
         frase:  'el sábado 10 de octubre a las 4:00 p. m.',
+        cita:   'Nos vemos el sábado 10 a las 4:00 en South Jordan',
         boleto: 'Sábado 10 de octubre<br>4:00 p. m. · puertas 3:45',
         grupo:  'https://chat.whatsapp.com/GDnxTQhpWa23OtYgwmK2aF',
         fechas: '20261010T220000Z/20261011T000000Z'
@@ -1048,6 +1104,7 @@
         document.getElementById('nombre-listo').textContent = primerNombre;
 
         var dia = EVENTOS[registro.evento];
+        document.getElementById('nos-vemos').textContent = dia.cita;
         document.getElementById('boleto-cuando').innerHTML = dia.boleto;
         document.getElementById('grupo').href = dia.grupo;
         document.getElementById('calendario').href = calendarioDe(registro.evento);
