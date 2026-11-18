@@ -32,7 +32,9 @@ em{font-style:italic}
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--vino-osc)}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;transform:scale(1.04);animation:respira 18s ease-in-out infinite alternate}
 @keyframes respira{to{transform:scale(1.1)}}
-.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(35,10,14,.35) 0%,rgba(35,10,14,.15) 35%,rgba(35,10,14,.78) 72%,rgba(30,8,12,.95) 100%)}
+.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,8,12,.9) 0%,rgba(30,8,12,.72) 38%,rgba(30,8,12,.2) 68%,rgba(30,8,12,0) 85%),linear-gradient(180deg,rgba(30,8,12,.25) 0%,rgba(30,8,12,0) 40%,rgba(30,8,12,.6) 100%)}
+@media (max-width:860px){.hero:after{background:linear-gradient(180deg,rgba(30,8,12,.2) 0%,rgba(30,8,12,.35) 30%,rgba(30,8,12,.88) 62%,rgba(30,8,12,.97) 100%)}.hero-img{object-position:50% 20%}}
+.hero .lead,.hero h1,.hero .over,.hero .firma{max-width:600px}
 .nieve{position:absolute;inset:0;z-index:1;pointer-events:none}
 .hero-body{position:relative;z-index:2;padding-top:120px;padding-bottom:64px;width:100%}
 .hero .over{color:var(--oro-2)}
