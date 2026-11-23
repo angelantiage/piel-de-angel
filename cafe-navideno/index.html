@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="theme-color" content="#3b1219"/>
 <title>Café Navideño con Ángel Guerra</title>
-<meta name="description" content="Un café navideño para compartir entre amigas, con análisis de tu piel, asesoría personalizada, consejos y rifas. Sábado 28 de noviembre, 6:00 p. m., Glendale, Colorado."/>
+<meta name="description" content="Un café navideño para compartir entre amigas, con análisis de tu piel, asesoría personalizada, consejos y rifas. Sábado 28 de noviembre, 6:00 p. m., Cherry Creek, Denver."/>
 <meta property="og:title" content="Café Navideño con Ángel Guerra ☕🎄"/>
-<meta property="og:description" content="Sábado 28 de noviembre · 6:00 p. m. · Hotel Hampton de Cherry Creek. Café, análisis de tu piel, consejos y rifas."/>
+<meta property="og:description" content="Sábado 28 de noviembre · 6:00 p. m. · Cherry Creek, Denver. Café, análisis de tu piel, consejos y rifas."/>
 <meta property="og:image" content="https://piel-de-angel-angel-guerra.vercel.app/cafe-navideno/portada.jpg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
@@ -177,7 +177,7 @@ footer{background:var(--vino-osc);color:#e6d2c2;text-align:center;padding:30px 2
   <div class="shell ficha-grid">
     <div class="dato"><span class="ico">📅</span><div><small>Cuándo</small><strong>Sábado 28 de noviembre de 2026</strong></div></div>
     <div class="dato"><span class="ico">🕕</span><div><small>Hora</small><strong>6:00 p. m.</strong></div></div>
-    <div class="dato"><span class="ico">📍</span><div><small>Dónde</small><strong>Hotel Hampton · Cherry Creek, Denver</strong></div></div>
+    <div class="dato"><span class="ico">📍</span><div><small>Dónde</small><strong>Cherry Creek, Denver</strong></div></div>
   </div>
 </section>
 
@@ -243,9 +243,7 @@ footer{background:var(--vino-osc);color:#e6d2c2;text-align:center;padding:30px 2
     <div class="detalles revela">
       <div class="over">Te esperamos</div>
       <p class="cuando">Sábado 28 de noviembre · 6:00 p. m.</p>
-      <p class="lugar">Hotel Hampton de Cherry Creek</p>
-      <p>4150 E Kentucky Ave, Glendale, CO 80246</p>
-      <a href="https://www.google.com/maps/search/?api=1&query=4150+E+Kentucky+Ave+Glendale+CO+80246" target="_blank" rel="noopener">Cómo llegar ↗</a>
+      <p class="lugar">Cherry Creek, Denver</p><p>¿Quieres más detalles? <a href="https://wa.me/13855562910" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:4px">Escríbeme por WhatsApp ↗</a></p>
     </div>
 
     <form class="registration" id="reservationForm" autocomplete="on" novalidate>
@@ -349,7 +347,7 @@ form.addEventListener('submit', async (event) => {
 function armarInvitacion(){
   const d = friendPhone.value.replace(/\D/g, '');
   const link = PAGINA + '?invita=' + encodeURIComponent(nombreReg) + '&utm_source=amiga';
-  const texto = `¡Hola! Me registré para un Café Navideño con Ángel Guerra, especialista en cuidado de la piel ☕🎄\n\n📅 Sábado 28 de noviembre, 6:00 p. m.\n📍 Hotel Hampton de Cherry Creek, Glendale\n\nVa a haber café, análisis de piel, consejos y rifas. Me encantaría que vinieras conmigo. Aparta tu lugar aquí:\n${link}`;
+  const texto = `¡Hola! Me registré para un Café Navideño con Ángel Guerra, especialista en cuidado de la piel ☕🎄\n\n📅 Sábado 28 de noviembre, 6:00 p. m.\n📍 Cherry Creek, Denver\n\nVa a haber café, análisis de piel, consejos y rifas. Me encantaría que vinieras conmigo. Aparta tu lugar aquí:\n${link}`;
   inviteLink.href = d.length >= 10 ? 'https://wa.me/' + waNumero(friendPhone.value) + '?text=' + encodeURIComponent(texto) : '#';
 }
 friendPhone.addEventListener('input', () => { friendError.hidden = true; friendPhone.removeAttribute('aria-invalid'); armarInvitacion(); });
