@@ -151,25 +151,25 @@ footer{background:var(--vino-osc);color:#e6d2c2;text-align:center;padding:30px 2
   .hero-img{animation:none}
   .revela{opacity:1;transform:none;transition:none}
 }
-</style>
+.hero h1.h1-frase{font-size:clamp(40px,6.4vw,78px);line-height:1.02;letter-spacing:-1px}.micro{font-size:13px;color:#e9d6c4;margin:14px 0 0}.sonido{display:inline-block;margin:0 0 18px;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:10px 16px;background:rgba(30,8,12,.45);backdrop-filter:blur(6px);color:#fff;font:700 13px "DM Sans",Arial,sans-serif;cursor:pointer}#reservationForm{scroll-margin-top:12px}@media (max-width:860px){.hero h1.h1-frase{font-size:33px;margin:4px 0 12px}.hero-body{padding-top:300px;padding-bottom:36px}.hero .lead{font-size:16px;margin-bottom:16px}.chips{gap:6px;margin-bottom:18px}.chip{padding:7px 11px;font-size:12.5px}.hero .sonido{position:absolute;top:18px;left:50%;transform:translateX(-50%);margin:0;white-space:nowrap}.hero:after{background:linear-gradient(180deg,rgba(30,8,12,0) 0%,rgba(30,8,12,.1) 28%,rgba(30,8,12,.85) 48%,rgba(30,8,12,.97) 100%)}}</style>
 </head>
 <body>
 
 <header class="hero" id="inicio">
-  <img class="hero-img" src="/cafe-navideno/portada.jpg" alt="Familia compartiendo café junto a la chimenea y el árbol de Navidad"/>
+  <video class="hero-img" id="vsl" src="/cafe-navideno/video.mp4" poster="/cafe-navideno/video-portada.jpg" autoplay muted loop playsinline preload="metadata"></video>
   <canvas class="nieve" id="nieve" aria-hidden="true"></canvas>
   <div class="shell hero-body">
-    <div class="over">Un encuentro para compartir entre amigas</div>
-    <span class="firma">con Ángel Guerra</span>
-    <h1>Café <em>Navideño</em></h1>
-    <p class="lead">¿Hace cuánto no te regalas una noche solo para ti? Ven a compartir un café calientito, buena conversación y todo lo que necesitas saber para cuidar tu piel en este frío.</p>
+    <button class="sonido" id="sonido" type="button">🔊 Toca para escuchar a Ángel</button>
+    <div class="over">Café navideño entre amigas · con Ángel Guerra</div>
+    <h1 class="h1-frase">Noviembre es para agradecer, <em>diciembre para celebrar</em></h1>
+    <p class="lead">Y quiero hacer las dos cosas contigo: un café entre amigas, tips de belleza, <strong>análisis de tu piel</strong> y asesoría uno a uno.</p>
     <div class="chips">
       <span class="chip">📅 Sábado 28 de noviembre</span>
       <span class="chip">🕕 6:00 p. m.</span>
-      <span class="chip">📍 Glendale, CO</span>
+      <span class="chip">📍 Denver · Cherry Creek</span>
     </div>
-    <a class="cta" href="#reservar">Aparta tu lugar ☕</a>
-    <a class="hero-link" href="#que-vas-a-vivir">Mira lo que vas a vivir</a>
+    <a class="cta" href="#reservationForm">Aparta tu lugar ☕</a>
+    <p class="micro">Hoy: $0 · te toma 20 segundos · te confirmo por WhatsApp</p>
   </div>
 </header>
 
@@ -177,7 +177,7 @@ footer{background:var(--vino-osc);color:#e6d2c2;text-align:center;padding:30px 2
   <div class="shell ficha-grid">
     <div class="dato"><span class="ico">📅</span><div><small>Cuándo</small><strong>Sábado 28 de noviembre de 2026</strong></div></div>
     <div class="dato"><span class="ico">🕕</span><div><small>Hora</small><strong>6:00 p. m.</strong></div></div>
-    <div class="dato"><span class="ico">📍</span><div><small>Dónde</small><strong>Hotel Hampton · Cherry Creek, Glendale</strong></div></div>
+    <div class="dato"><span class="ico">📍</span><div><small>Dónde</small><strong>Hotel Hampton · Cherry Creek, Denver</strong></div></div>
   </div>
 </section>
 
@@ -286,7 +286,7 @@ footer{background:var(--vino-osc);color:#e6d2c2;text-align:center;padding:30px 2
 </section>
 
 <footer>CAFÉ NAVIDEÑO · UNA NOCHE DE CAFÉ Y CUIDADO DE LA PIEL CON ÁNGEL GUERRA</footer>
-<a class="flotante" id="flotante" href="#reservar">☕ Aparta tu lugar</a>
+<a class="flotante" id="flotante" href="#reservationForm">☕ Aparta tu lugar</a>
 
 <script>
 // Número al que llegan los mensajes para unirse al grupo (el mismo del taller, dictado por Angel el 2026-11-18).
@@ -388,5 +388,6 @@ window.addEventListener('scroll', () => {
     requestAnimationFrame(loop); })();
 })();
 </script>
+<script>(function(){var v=document.getElementById('vsl'),b=document.getElementById('sonido');if(!v||!b)return;b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.loop=false;}v.play();b.textContent=v.muted?'🔊 Toca para escuchar a Ángel':'🔇 Silenciar';});v.addEventListener('ended',function(){v.muted=true;v.loop=true;v.play();b.textContent='🔊 Toca para escuchar a Ángel';});})();</script>
 </body>
 </html>
