@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#faf5ef"/><meta name="robots" content="noindex,nofollow"/>
+<meta name="referrer" content="no-referrer"/>
+<title>Mis entradas · Denver</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet"/>
+<style>
+:root{--cream:#faf5ef;--paper:#fffdfb;--gold:#a97737;--dark:#34271f;--muted:#79665b;--line:#e7dbcd;--ok:#2f7d4f;--wa:#1f9d55}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--dark);font-family:'DM Sans',Arial,sans-serif;padding:20px 16px 50px}
+.wrap{max-width:560px;margin:0 auto}
+h1{font-family:'Playfair Display',Georgia,serif;font-size:26px;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 16px;font-size:14px}
+.tope{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:14px;margin-bottom:18px}
+h2{font-size:17px;margin:26px 0 4px}
+.cuenta{font-size:13px;color:var(--muted);margin:0 0 10px}
+.fila{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px;display:flex;gap:10px;align-items:center}
+.quien{flex:1;min-width:0}
+.quien strong{display:block;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.quien span{font-size:12px;color:var(--muted)}
+.marcas{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.m{font-size:11px;font-weight:700;border-radius:99px;padding:2px 8px;background:#f1e8de;color:var(--muted)}
+.m.si{background:#e8f3ec;color:var(--ok)}
+button.m{border:1px dashed #c9b6a4;font-family:inherit;cursor:pointer}button.m.si{border:1px solid #9fceb2}
+a.wa{background:var(--wa);color:#fff;text-decoration:none;font-weight:700;font-size:14px;border-radius:12px;padding:10px 12px;white-space:nowrap}
+a.wa.ya{background:#cfe9d9;color:var(--ok)}
+a.ver{color:var(--gold);font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}
+.aviso{color:#9b3a2a;background:#fbe9e5;border-radius:12px;padding:14px}
+</style></head>
+<body><main class="wrap">
+  <h1>Mis entradas · Denver</h1>
+  <p class="sub">Toca el botón verde y se abre WhatsApp con su entrada lista. Solo das enviar.</p>
+  <div class="tope" id="tope"></div>
+  <div id="lista"><p class="sub">Cargando…</p></div>
+</main>
+<script>
+const SUPABASE_URL = 'https://vevvouhnytkfkvrwlfoh.supabase.co';
+const SUPABASE_LLAVE = 'sb_publishable_nJiWG8fAvfaye3XLHdEB7A_GrYFXwua';
+const SITIO = 'https://piel-de-angel-angel-guerra.vercel.app';
+const DIRECCION = '4692 Beeler Ct, Denver, CO 80238';
+const TOPE_DIA = 15;
+const EVENTOS = {
+  'piel-de-angel-2026-11-28': {titulo: '☀️ Clase de automaquillaje · 9:00 a. m.', nombre: 'la clase de automaquillaje Piel de Ángel', hora: '9:00 a. m.', corta: 'a las 9'},
+  'cafe-navideno-2026-11-28': {titulo: '☕ Café navideño · 6:00 p. m.', nombre: 'el café navideño entre amigas', hora: '6:00 p. m.', corta: 'a las 6'}
+};
+const $ = id => document.getElementById(id);
+// La clave llega una sola vez en el enlace (#clave=...), se guarda en este teléfono y se borra de la barra.
+let clave = null;
+const h = new URLSearchParams(location.hash.slice(1));
+try {
+  if (h.get('clave')) { localStorage.setItem('clave_puerta', h.get('clave')); history.replaceState(null, '', location.pathname); }
+  clave = localStorage.getItem('clave_puerta');
+} catch (e) { clave = h.get('clave'); }
+function rpc(nombre, datos){
+  return fetch(SUPABASE_URL + '/rest/v1/rpc/' + nombre, {
+    method: 'POST', headers: {'apikey': SUPABASE_LLAVE, 'Content-Type': 'application/json'},
+    body: JSON.stringify(datos)
+  }).then(r => r.ok ? r.json() : null).catch(() => null);
+}
+function waNumero(tel){
+  const d = (tel || '').replace(/\D/g, '');
+  return (d.length === 10 && !(tel || '').trim().startsWith('+')) ? '1' + d : d;
+}
+function mensaje(r){
+  const ev = EVENTOS[r.evento], primer = r.nombre.trim().split(/\s+/)[0];
+  return `¡Hola, ${primer}! 💛 Soy Ángel Guerra.\n\nAquí tienes tu entrada personal para ${ev.nombre}:\n${SITIO}/entrada?id=${r.id}\n\n📅 Sábado 28 de noviembre · ${ev.hora}\n📍 Ojo, la dirección cambió: ${DIRECCION}\n\nÁbrela y toca «Sí, ahí estaré» para guardar tu lugar. En la puerta solo muestras el código.\n\nNos vemos el sábado 28 ${ev.corta} en Denver ✨`;
+}
+const hoy = d => d && new Date(d).toDateString() === new Date().toDateString();
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let filas = [];
+function pintar(){
+  const enviadasHoy = filas.filter(r => hoy(r.entrada_enviada_en)).length;
+  $('tope').innerHTML = `Enviadas hoy: <strong>${enviadasHoy} de ${TOPE_DIA}</strong>` + (enviadasHoy >= TOPE_DIA ? ' · ya llegaste a tu tope de hoy' : '');
+  let html = '';
+  for (const ev of Object.keys(EVENTOS)) {
+    const del = filas.filter(r => r.evento === ev);
+    const n = k => del.filter(r => r[k]).length;
+    html += `<h2>${EVENTOS[ev].titulo}</h2><p class="cuenta">${del.length} inscritas · ${n('entrada_enviada_en')} con entrada · ${n('confirmada_en')} confirmadas · ${n('llego_en')} llegaron</p>`;
+    for (const r of del) {
+      const enviada = !!r.entrada_enviada_en;
+      html += `<div class="fila"><div class="quien"><strong>${esc(r.nombre)}</strong><span>${esc(r.telefono || '')}</span>
+        <div class="marcas"><span class="m ${enviada?'si':''}">${enviada?'Enviada':'Sin enviar'}</span><span class="m ${r.confirmada_en?'si':''}">${r.confirmada_en?'Confirmó ✓':'Sin confirmar'}</span><button class="m llega ${r.llego_en?'si':''}" data-llega="${r.id}">${r.llego_en?'Llegó ✓':'Marcar llegada'}</button></div></div>
+        <a class="ver" href="/entrada?id=${r.id}" target="_blank">Ver</a>
+        <a class="wa ${enviada?'ya':''}" data-id="${r.id}" target="_blank" rel="noopener" href="https://wa.me/${waNumero(r.telefono)}?text=${encodeURIComponent(mensaje(r))}">${enviada?'Reenviar':'WhatsApp'}</a></div>`;
+    }
+  }
+  $('lista').innerHTML = html;
+}
+document.addEventListener('click', async e => {
+  const b = e.target.closest('button[data-llega]');
+  if (b) {
+    const r = filas.find(x => x.id === b.dataset.llega); if (!r) return;
+    b.disabled = true;
+    const ok = await rpc('marcar_entrada', {p_clave: clave, p_id: r.id, p_que: r.llego_en ? 'no_llego' : 'llego'});
+    if (ok) r.llego_en = r.llego_en ? null : new Date().toISOString(); else alert('No se pudo marcar. Revisa la señal.');
+    pintar(); return;
+  }
+  const a = e.target.closest('a.wa'); if (!a) return;
+  const r = filas.find(x => x.id === a.dataset.id);
+  rpc('marcar_entrada', {p_clave: clave, p_id: a.dataset.id, p_que: 'enviada'});
+  if (r) { r.entrada_enviada_en = new Date().toISOString(); setTimeout(pintar, 300); }
+});
+(async () => {
+  if (!clave) { $('tope').hidden = true; $('lista').innerHTML = '<p class="aviso">Esta página necesita tu enlace con clave. Ábrela desde el enlace que te pasó Claude.</p>'; return; }
+  const datos = await rpc('lista_entradas', {p_clave: clave});
+  if (!datos) { $('tope').hidden = true; $('lista').innerHTML = '<p class="aviso">No pude abrir la lista: la clave no sirve o no hay señal.</p>'; return; }
+  filas = datos.filter(r => EVENTOS[r.evento]);
+  pintar();
+})();
+</script>
+</body></html>

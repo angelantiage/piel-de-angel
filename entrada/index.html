@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#faf5ef"/><meta name="robots" content="noindex,nofollow"/>
+<title>Tu entrada · Ángel Guerra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Great+Vibes&display=swap" rel="stylesheet"/>
+<style>
+:root{--cream:#faf5ef;--paper:#fffdfb;--peach:#e7c3aa;--gold:#a97737;--gold2:#c79a63;--dark:#34271f;--muted:#79665b;--line:#e7dbcd;--ok:#2f7d4f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--dark);font-family:'DM Sans',Arial,sans-serif;min-height:100vh;display:flex;justify-content:center;padding:28px 16px 40px}
+.wrap{width:100%;max-width:400px}
+.ticket{background:var(--paper);border-radius:22px;box-shadow:0 18px 50px rgba(52,39,31,.12),0 0 0 1px var(--line);overflow:hidden;position:relative}
+.top{padding:26px 24px 20px;text-align:center;background:linear-gradient(160deg,#fff8f1,#f6e6d8)}
+.kicker{letter-spacing:.32em;font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;margin:0}
+.firma{font-family:'Great Vibes',cursive;font-size:30px;color:var(--gold);margin:6px 0 2px}
+h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:25px;line-height:1.2;margin:8px 0 0}
+.para{margin:14px 0 0;font-size:15px;color:var(--muted)}
+.para strong{color:var(--dark);font-size:18px}
+.corte{position:relative;height:0;border-top:2px dashed var(--line);margin:0 18px}
+.corte:before,.corte:after{content:"";position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;background:var(--cream)}
+.corte:before{left:-31px}.corte:after{right:-31px}
+.datos{padding:18px 24px 6px;display:grid;gap:12px}
+.dato small{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.dato div{font-size:16px;font-weight:600;margin-top:2px}
+.dato a{color:var(--gold);font-weight:600;font-size:14px}
+.nueva{display:inline-block;background:#fbe9d7;color:#8a5a1e;font-size:11px;font-weight:700;border-radius:99px;padding:2px 8px;margin-left:6px;letter-spacing:.04em;vertical-align:2px}
+.qr{padding:16px 24px 8px;text-align:center}
+.qr #codigo{display:inline-block;padding:10px;background:#fff;border-radius:14px;box-shadow:0 0 0 1px var(--line)}
+.qr #codigo img,.qr #codigo svg{display:block;width:190px;height:190px}
+.qr p{font-size:13px;color:var(--muted);margin:10px 0 0}
+.acciones{padding:14px 24px 24px;display:grid;gap:10px}
+button{font:inherit;font-weight:700;font-size:16px;border:0;border-radius:14px;padding:15px 18px;cursor:pointer;width:100%}
+.btn{background:var(--dark);color:#fff}
+.btn:disabled{opacity:.6}
+.listo{background:#e8f3ec;color:var(--ok);border-radius:14px;padding:14px;text-align:center;font-weight:700}
+.puerta{background:var(--gold);color:#fff}
+.sello{position:absolute;top:18px;right:-34px;transform:rotate(35deg);background:var(--ok);color:#fff;font-weight:700;font-size:12px;letter-spacing:.12em;padding:5px 40px;text-transform:uppercase}
+.estado{text-align:center;color:var(--muted);padding:60px 10px}
+.pie{text-align:center;font-size:12px;color:var(--muted);margin-top:16px}
+
+/* Tema navideño (café): rojo y verde */
+body.navidad{--cream:#f6efe6;--gold:#b8892f;--line:#e4d3c3;background:radial-gradient(circle at 20% 0%,#fbf3ea,#f1e6d8)}
+.navidad .top{background:linear-gradient(160deg,#a3192a,#7a0f1d);color:#fff8ef}
+.navidad .kicker{color:#f2cf86}
+.navidad .firma{color:#f6dca0}
+.navidad h1{color:#fff}
+.navidad .para{color:#f3dcd4}.navidad .para strong{color:#fff}
+.navidad .ticket{box-shadow:0 18px 50px rgba(122,15,29,.18),0 0 0 1px #e9cfc4}
+.navidad .ticket:before{content:"❄ ✦ ❄ ✦ ❄";position:absolute;top:10px;left:0;right:0;text-align:center;color:rgba(255,255,255,.28);font-size:11px;letter-spacing:.6em;z-index:1}
+.navidad .nueva{background:#e3efe6;color:#1d5c3a}
+.navidad .dato a{color:#a3192a}
+.navidad .btn{background:#1d5c3a}
+.navidad .qr #codigo{box-shadow:0 0 0 2px #1d5c3a}
+.navidad .corte{border-top-color:#e4cfc2}
+.navidad .pie a{color:#a3192a!important}
+</style></head>
+<body><main class="wrap">
+  <p class="estado" id="cargando">Cargando tu entrada…</p>
+  <section class="ticket" id="ticket" hidden>
+    <div class="sello" id="sello" hidden>Llegó ✓</div>
+    <div class="top">
+      <p class="kicker">Entrada personal</p>
+      <p class="firma">Ángel Guerra</p>
+      <h1 id="titulo"></h1>
+      <p class="para">Esta entrada es para <strong id="nombre"></strong></p>
+    </div>
+    <div class="corte"></div>
+    <div class="datos">
+      <div class="dato"><small>Cuándo</small><div id="cuando"></div></div>
+      <div class="dato"><small>Dónde <span class="nueva">DIRECCIÓN NUEVA</span></small><div id="donde"></div><a id="mapa" target="_blank" rel="noopener">Abrir en el mapa ↗</a></div>
+    </div>
+    <div class="qr"><div id="codigo"></div><p>Muestra este código en la puerta</p></div>
+    <div class="acciones">
+      <button class="btn" id="confirmar">Sí, ahí estaré ✓</button>
+      <div class="listo" id="confirmada" hidden>¡Confirmada! Te espero 💛</div>
+      <button class="puerta" id="marcar" hidden>Marcar que llegó</button>
+    </div>
+  </section>
+  <p class="pie">¿Alguna duda? <a href="https://wa.me/13855562910" target="_blank" rel="noopener" style="color:var(--gold)">Escríbeme por WhatsApp ↗</a></p>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+const SUPABASE_URL = 'https://vevvouhnytkfkvrwlfoh.supabase.co';
+const SUPABASE_LLAVE = 'sb_publishable_nJiWG8fAvfaye3XLHdEB7A_GrYFXwua';
+const EVENTOS = {
+  'piel-de-angel-2026-11-28': {titulo: 'Piel de Ángel · Clase de automaquillaje', cuando: 'Sábado 28 de noviembre · 9:00 a. m.'},
+  'cafe-navideno-2026-11-28': {titulo: 'Café navideño entre amigas ☕🎄', cuando: 'Sábado 28 de noviembre · 6:00 p. m.', tema: 'navidad'}
+};
+const $ = id => document.getElementById(id);
+const id = new URLSearchParams(location.search).get('id') || '';
+let clave = null;
+try { clave = localStorage.getItem('clave_puerta'); } catch (e) {}
+function rpc(nombre, datos){
+  return fetch(SUPABASE_URL + '/rest/v1/rpc/' + nombre, {
+    method: 'POST', headers: {'apikey': SUPABASE_LLAVE, 'Content-Type': 'application/json'},
+    body: JSON.stringify(datos)
+  }).then(r => r.ok ? r.json() : null).catch(() => null);
+}
+function noEncontrada(){ $('cargando').textContent = 'No encontré esta entrada. Revisa que el enlace esté completo o escríbeme por WhatsApp.'; }
+function marcarLlegada(llego){
+  $('sello').hidden = !llego;
+  $('marcar').textContent = llego ? 'Ya llegó ✓ (tocar para deshacer)' : 'Marcar que llegó';
+  $('marcar').dataset.llego = llego ? '1' : '';
+}
+(async () => {
+  if (!/^[0-9a-f-]{36}$/i.test(id)) return noEncontrada();
+  const e = await rpc('ver_entrada', {p_id: id});
+  if (!e || !EVENTOS[e.evento]) return noEncontrada();
+  const ev = EVENTOS[e.evento];
+  if (ev.tema) { document.body.classList.add(ev.tema); document.querySelector('meta[name=theme-color]').content = '#7a0f1d'; }
+  const dir = e.direccion || '4692 Beeler Ct, Denver, CO 80238';
+  document.title = 'Entrada de ' + e.nombre + ' · ' + ev.titulo;
+  $('titulo').textContent = ev.titulo;
+  $('nombre').textContent = e.nombre;
+  $('cuando').textContent = ev.cuando;
+  $('donde').textContent = dir;
+  $('mapa').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(dir);
+  const qr = qrcode(0, 'M'); qr.addData(location.origin + '/entrada?id=' + id); qr.make();
+  $('codigo').innerHTML = qr.createSvgTag({cellSize: 6, margin: 0, scalable: true});
+  if (e.confirmada) { $('confirmar').hidden = true; $('confirmada').hidden = false; }
+  if (clave) { $('marcar').hidden = false; marcarLlegada(e.llego); }
+  $('cargando').hidden = true; $('ticket').hidden = false;
+})();
+$('confirmar').addEventListener('click', async () => {
+  $('confirmar').disabled = true; $('confirmar').textContent = 'Guardando…';
+  const ok = await rpc('confirmar_entrada', {p_id: id});
+  if (ok) { $('confirmar').hidden = true; $('confirmada').hidden = false; }
+  else { $('confirmar').disabled = false; $('confirmar').textContent = 'No se pudo guardar. Toca otra vez'; }
+});
+$('marcar').addEventListener('click', async () => {
+  const llego = !!$('marcar').dataset.llego;
+  $('marcar').disabled = true;
+  const ok = await rpc('marcar_entrada', {p_clave: clave, p_id: id, p_que: llego ? 'no_llego' : 'llego'});
+  $('marcar').disabled = false;
+  if (ok) marcarLlegada(!llego); else alert('No se pudo marcar. Revisa la señal e intenta otra vez.');
+});
+</script>
+</body></html>

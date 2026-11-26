@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="theme-color" content="#3b1219"/>
 <title>Café Navideño con Ángel Guerra</title>
-<meta name="description" content="Un café navideño para compartir entre amigas, con análisis de tu piel, asesoría personalizada, consejos y rifas. Sábado 28 de noviembre, 6:00 p. m., Cherry Creek, Denver."/>
+<meta name="description" content="Un café navideño para compartir entre amigas, con análisis de tu piel, asesoría personalizada, consejos y rifas. Sábado 28 de noviembre, 6:00 p. m., Denver."/>
 <meta property="og:title" content="Café Navideño con Ángel Guerra ☕🎄"/>
-<meta property="og:description" content="Sábado 28 de noviembre · 6:00 p. m. · Cherry Creek, Denver. Café, análisis de tu piel, consejos y rifas."/>
+<meta property="og:description" content="Sábado 28 de noviembre · 6:00 p. m. · Denver. Café, análisis de tu piel, consejos y rifas."/>
 <meta property="og:image" content="https://piel-de-angel-angel-guerra.vercel.app/cafe-navideno/portada.jpg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
@@ -166,7 +166,7 @@ footer{background:var(--vino-osc);color:#e6d2c2;text-align:center;padding:30px 2
     <div class="chips">
       <span class="chip">📅 Sábado 28 de noviembre</span>
       <span class="chip">🕕 6:00 p. m.</span>
-      <span class="chip">📍 Denver · Cherry Creek</span>
+      <span class="chip">📍 Denver</span>
     </div>
     <a class="cta" href="#reservationForm">Aparta tu lugar ☕</a>
     <p class="micro">Hoy: $0 · te toma 20 segundos · te confirmo por WhatsApp</p>
@@ -177,7 +177,7 @@ footer{background:var(--vino-osc);color:#e6d2c2;text-align:center;padding:30px 2
   <div class="shell ficha-grid">
     <div class="dato"><span class="ico">📅</span><div><small>Cuándo</small><strong>Sábado 28 de noviembre de 2026</strong></div></div>
     <div class="dato"><span class="ico">🕕</span><div><small>Hora</small><strong>6:00 p. m.</strong></div></div>
-    <div class="dato"><span class="ico">📍</span><div><small>Dónde</small><strong>Cherry Creek, Denver</strong></div></div>
+    <div class="dato"><span class="ico">📍</span><div><small>Dónde</small><strong>Denver</strong></div></div>
   </div>
 </section>
 
@@ -243,7 +243,7 @@ footer{background:var(--vino-osc);color:#e6d2c2;text-align:center;padding:30px 2
     <div class="detalles revela">
       <div class="over">Te esperamos</div>
       <p class="cuando">Sábado 28 de noviembre · 6:00 p. m.</p>
-      <p class="lugar">Cherry Creek, Denver</p><p>¿Quieres más detalles? <a href="https://wa.me/13855562910" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:4px">Escríbeme por WhatsApp ↗</a></p>
+      <p class="lugar">Denver</p><p>¿Quieres más detalles? <a href="https://wa.me/13855562910" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:4px">Escríbeme por WhatsApp ↗</a></p>
     </div>
 
     <form class="registration" id="reservationForm" autocomplete="on" novalidate>
@@ -263,7 +263,7 @@ footer{background:var(--vino-osc);color:#e6d2c2;text-align:center;padding:30px 2
     <div class="registration done" id="regDone" hidden>
       <div class="check" aria-hidden="true">✓</div>
       <h3 id="doneTitle">¡Ya estás registrada!</h3>
-      <p>Tu lugar quedó apartado para el <strong>sábado 28 de noviembre a las 6:00 p. m.</strong></p>
+      <p>Tu lugar quedó apartado para el <strong>sábado 28 de noviembre a las 6:00 p. m.</strong></p><p id="miEntrada" hidden style="margin:10px 0 4px"><a id="miEntradaLink" target="_blank" rel="noopener" style="display:inline-block;background:#34271f;color:#fff;text-decoration:none;font-weight:700;border-radius:12px;padding:11px 16px">🎟️ Ver mi entrada</a></p>
       <div class="paso">
         <div class="kicker">PASO 2 DE 3 · INVITA A ALGUIEN</div>
         <p class="paso-txt">¿Quieres venir con tu mamá, tu hermana o una amiga? Escribe su teléfono y le llega la invitación por WhatsApp.</p>
@@ -339,6 +339,7 @@ form.addEventListener('submit', async (event) => {
   const message = `¡Hola! Soy ${nombre} y me acabo de registrar para el Café Navideño con Ángel Guerra del sábado 28 de noviembre a las 6:00 p. m. Quiero unirme al grupo del evento.\n\nMi teléfono: ${telefono}\nMi correo: ${correo}` + (who ? `\nMe invitó: ${who}` : '');
   $('groupLink').href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
   $('doneTitle').textContent = `¡Listo, ${primerNombre}! Ya estás registrada`;
+  if (reservaId) { $('miEntradaLink').href = '/entrada?id=' + reservaId; $('miEntrada').hidden = false; }
   form.hidden = true; done.hidden = false;
   done.scrollIntoView({behavior:'smooth', block:'start'});
 });
@@ -347,7 +348,7 @@ form.addEventListener('submit', async (event) => {
 function armarInvitacion(){
   const d = friendPhone.value.replace(/\D/g, '');
   const link = PAGINA + '?invita=' + encodeURIComponent(nombreReg) + '&utm_source=amiga';
-  const texto = `¡Hola! Me registré para un Café Navideño con Ángel Guerra, especialista en cuidado de la piel ☕🎄\n\n📅 Sábado 28 de noviembre, 6:00 p. m.\n📍 Cherry Creek, Denver\n\nVa a haber café, análisis de piel, consejos y rifas. Me encantaría que vinieras conmigo. Aparta tu lugar aquí:\n${link}`;
+  const texto = `¡Hola! Me registré para un Café Navideño con Ángel Guerra, especialista en cuidado de la piel ☕🎄\n\n📅 Sábado 28 de noviembre, 6:00 p. m.\n📍 Denver\n\nVa a haber café, análisis de piel, consejos y rifas. Me encantaría que vinieras conmigo. Aparta tu lugar aquí:\n${link}`;
   inviteLink.href = d.length >= 10 ? 'https://wa.me/' + waNumero(friendPhone.value) + '?text=' + encodeURIComponent(texto) : '#';
 }
 friendPhone.addEventListener('input', () => { friendError.hidden = true; friendPhone.removeAttribute('aria-invalid'); armarInvitacion(); });
